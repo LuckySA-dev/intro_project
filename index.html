@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ระบบจัดการโครงการนักศึกษา – ลงทะเบียนผู้ใช้ใหม่</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="vendor/style/style.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="container-fluid px-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2 top-left">
+          <button class="btn backchip" aria-label="ย้อนกลับ"><span>&lsaquo;</span></button>
+          <input class="form-control form-control-sm search-pill" value=": ลงทะเบียนผู้ใช้ใหม่" />
+        </div>
+
+        <div class="d-flex align-items-center gap-3 top-right">
+          <div class="subtitle small">Student Project Management System – Present Mockup</div>
+          <div class="title">ระบบจัดการโครงการนักศึกษา</div>
+          <div class="avatar">S</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="page-wrap container-fluid">
+    <div class="row g-0">
+
+      <!-- LEFT BLUE RAIL + LOGIN CARD -->
+      <div class="col-12 col-lg-3 position-relative">
+
+        <div class="login-card">
+          <div class="logo-hold">
+            <div class="fake-logo">
+              <img src="vendor/img/logo.png" alt="" srcset="" height="100%" width="100%">
+            </div>
+          </div>
+
+          <label class="form-label small fw-semibold mb-1">ชื่อผู้ใช้</label>
+          <input type="text" class="form-control slim mb-3" />
+
+          <label class="form-label small fw-semibold mb-1">รหัสผ่าน</label>
+          <input type="password" class="form-control slim mb-3" />
+
+          <button class="btn btn-primary w-100 rounded-pill mb-3">เข้าสู่ระบบ</button>
+
+          <div class="links small">
+            <div class="link-item" onclick="window.location.href='index.html'" style="cursor: pointer;"><span class="arrow">→</span> ลงทะเบียนผู้ใช้ใหม่</div>
+            <div class="link-item" onclick="window.location.href='vendor/src/forgot_password.html'" style="cursor: pointer;"><span class="arrow">→</span> ลืมรหัสผ่าน</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="col-12 col-lg-8 px-3 px-lg-4 py-3 py-lg-4">
+        <div class="announce-bar text-center">ข่าวประกาศภาควิชา</div>
+
+        <section class="register-panel mt-3">
+          <h5 class="text-center fw-semibold mb-4 fc-1">ลงทะเบียนผู้ใช้ใหม่</h5>
+
+          <div class="row g-4 justify-content-center mt-5">
+            <div class="col-2 col-sm-4 col-md-4">
+              <button class="role-card w-100" onclick="window.location.href='vendor/src/register_stu.html'">นักศึกษา</button>
+            </div>
+            <div class="col-10 col-sm-5 col-md-4">
+              <button class="role-card w-100" onclick="window.location.href='vendor/src/register_tea.html'">อาจารย์</button>
+            </div>
+            <div class="col-12 col-sm-4 col-md-6" style="margin-top: 100px">
+              <button class="role-card w-100" onclick="window.location.href='vendor/src/register_staff.html'">บุคลากร/เจ้าหน้าที่</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ระบบจัดการโครงการนักศึกษา – บันทึกความก้าวหน้า</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../style/style.css" />
+</head>
+<body class="student-dashboard">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="container-fluid px-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2 top-left">
+          <button class="btn btn-icon-home" aria-label="หน้าหลัก" onclick="location.href='student-3.html'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </button>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text">Home</span>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text fw-semibold">บันทึกความก้าวหน้า</span>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 top-right">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" placeholder="Search" class="search-input" />
+          </div>
+          <button class="btn btn-icon-notif">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="notif-badge">0</span>
+          </button>
+          <div class="avatar">S</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="dashboard-wrap container-fluid">
+    <div class="row g-3">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="col-12 col-lg-auto">
+        <aside class="sidebar">
+          <div class="logo-section">
+            <div class="logo-img">
+              <img src="../../img/logo.png" alt="Logo" height="100%" width="100%">
+            </div>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="student.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              <span>รายละเอียด</span>
+            </a>
+
+            <a href="student-2.html" class="nav-item active">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+              <span>บันทึกความก้าวหน้า</span>
+            </a>
+
+            <a href="student-3.1.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>ติดตามผลสอบ</span>
+            </a>
+
+            <a href="student-3.3.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>ยื่นสอบงาน</span>
+            </a>
+
+            <a href="student-3.4.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>comment</span>
+            </a>
+          </nav>
+        </aside>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="col-12 col-lg">
+        <div class="content-area">
+          
+          <!-- Top Row: Calendar & Status Card -->
+          <div class="row g-3 mb-3">
+            
+            <!-- Calendar Card -->
+            <div class="col-12 col-md-6">
+              <div class="card-widget">
+                <div class="widget-header">
+                  <h6 class="widget-title">การสอบหัวข้อ</h6>
+                </div>
+                <div class="calendar-section">
+                  <p class="calendar-subtitle">สถานะการสอบหัวข้อ</p>
+                  <div class="status-display-box" id="examStatusBox">
+                    <!-- Status will be displayed here dynamically -->
+                    <div class="exam-status-badge status-pass">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                      <span class="status-text">ผ่าน</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini Calendar -->
+            <div class="col-12 col-md-6">
+              <div class="card-widget calendar-widget">
+                <div class="calendar-header">
+                  <button class="btn-calendar-nav">‹</button>
+                  <div class="calendar-month">
+                    <span class="month-name">April</span>
+                    <span class="year-name">2021</span>
+                  </div>
+                  <button class="btn-calendar-nav">›</button>
+                </div>
+                <div class="calendar-grid">
+                  <div class="calendar-day-header">Mo</div>
+                  <div class="calendar-day-header">Tu</div>
+                  <div class="calendar-day-header">We</div>
+                  <div class="calendar-day-header">Th</div>
+                  <div class="calendar-day-header">Fr</div>
+                  <div class="calendar-day-header">Sa</div>
+                  <div class="calendar-day-header">Su</div>
+                  
+                  <div class="calendar-day inactive">29</div>
+                  <div class="calendar-day inactive">30</div>
+                  <div class="calendar-day inactive">31</div>
+                  <div class="calendar-day">1</div>
+                  <div class="calendar-day">2</div>
+                  <div class="calendar-day">3</div>
+                  <div class="calendar-day">4</div>
+                  
+                  <div class="calendar-day">5</div>
+                  <div class="calendar-day">6</div>
+                  <div class="calendar-day active">7</div>
+                  <div class="calendar-day">8</div>
+                  <div class="calendar-day">9</div>
+                  <div class="calendar-day">10</div>
+                  <div class="calendar-day">11</div>
+                  
+                  <div class="calendar-day">12</div>
+                  <div class="calendar-day">13</div>
+                  <div class="calendar-day">14</div>
+                  <div class="calendar-day">15</div>
+                  <div class="calendar-day">0</div>
+                  <div class="calendar-day">17</div>
+                  <div class="calendar-day">18</div>
+                  
+                  <div class="calendar-day">19</div>
+                  <div class="calendar-day">20</div>
+                  <div class="calendar-day">21</div>
+                  <div class="calendar-day">22</div>
+                  <div class="calendar-day">23</div>
+                  <div class="calendar-day">24</div>
+                  <div class="calendar-day">25</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Progress Report Card -->
+          <div class="card-widget progress-card">
+            <div class="widget-header">
+              <h6 class="widget-title">การอัพเดทรายงานสัปดาห์</h6>
+            </div>
+            <div class="progress-content">
+              
+              <!-- CRUD Form -->
+              <form id="reportForm" class="report-crud-form mb-4">
+                <div class="row g-3">
+                  
+                  <div class="col-12 col-md-6">
+                    <label class="form-label fw-semibold">ชื่อเอกสาร</label>
+                    <input type="text" class="form-control input-field" id="docName" placeholder="กรอกชื่อเอกสาร" required>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label class="form-label fw-semibold">วันที่</label>
+                    <input type="date" class="form-control input-field" id="docDate" required>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label fw-semibold">แนบเอกสาร (PDF, DOC, DOCX)</label>
+                    <div class="file-upload-wrapper">
+                      <input type="file" class="file-input-hidden" id="docFile" accept=".pdf,.doc,.docx" multiple>
+                      <button type="button" class="btn-file-select" onclick="document.getElementById('docFile').click()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                          <polyline points="17 8 12 3 7 8"></polyline>
+                          <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        เลือกไฟล์
+                      </button>
+                      <div id="fileList" class="file-list mt-2"></div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label fw-semibold">หมายเหตุ</label>
+                    <textarea class="form-control input-field" id="docNote" rows="3" placeholder="กรอกรายละเอียดเพิ่มเติม"></textarea>
+                  </div>
+
+                  <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-success btn-submit px-4">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      บันทึกรายงาน
+                    </button>
+                  </div>
+
+                </div>
+              </form>
+
+              <!-- Reports Table -->
+              <div class="reports-table-wrapper">
+                <h6 class="section-subtitle mb-3">รายการรายงานที่บันทึกแล้ว</h6>
+                <div class="table-responsive">
+                  <table class="table reports-table" id="reportsTable">
+                    <thead>
+                      <tr>
+                        <th width="5%">#</th>
+                        <th width="25%">ชื่อเอกสาร</th>
+                        <th width="15%">วันที่</th>
+                        <th width="25%">ไฟล์แนบ</th>
+                        <th width="20%">หมายเหตุ</th>
+                        <th width="10%">จัดการ</th>
+                      </tr>
+                    </thead>
+                    <tbody id="reportsTableBody">
+                      <!-- Sample data -->
+                      <tr>
+                        <td>1</td>
+                        <td>รายงานความก้าวหน้าสัปดาห์ที่ 1</td>
+                        <td>07/04/2021</td>
+                        <td>
+                          <span class="file-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                              <polyline points="13 2 13 9 20 9"></polyline>
+                            </svg>
+                            report1.pdf
+                          </span>
+                        </td>
+                        <td>เอกสารครบถ้วน</td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="btn-action btn-edit" onclick="editReport(1)" title="แก้ไข">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                              </svg>
+                            </button>
+                            <button class="btn-action btn-delete" onclick="deleteReport(1)" title="ลบ">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                              </svg>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Chart Section -->
+              <div class="chart-section mt-4">
+                <div class="row align-items-center">
+                  <div class="col-12 col-md-7">
+                    <div class="pie-chart-container">
+                      <canvas id="progressChart"></canvas>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-5">
+                    <div class="chart-legend-vertical">
+                      <div class="legend-item">
+                        <span class="legend-dot green-dot"></span>
+                        <span class="legend-text">สำเร็จ</span>
+                      </div>
+                      <div class="legend-item">
+                        <span class="legend-dot red-dot"></span>
+                        <span class="legend-text">ยังไม่สำเร็จ</span>
+                      </div>
+                      <div class="legend-item">
+                        <span class="legend-dot orange-dot"></span>
+                        <span class="legend-text">รอเเก้ไข</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Exam Status Management
+    let examStatus = 'pass'; // สถานะเริ่มต้น: 'pass', 'fail', 'revision', 'pending'
+    
+    // Status configurations
+    const statusConfig = {
+      pass: {
+        label: 'ผ่าน',
+        icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>`,
+        class: 'status-pass',
+        color: '#4ade80'
+      },
+      fail: {
+        label: 'ไม่ผ่าน',
+        icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>`,
+        class: 'status-fail',
+        color: '#ef4444'
+      },
+      revision: {
+        label: 'แก้ไข',
+        icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>`,
+        class: 'status-revision',
+        color: '#fbbf24'
+      },
+      pending: {
+        label: 'รอผลการสอบ',
+        icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>`,
+        class: 'status-pending',
+        color: '#3b82f6'
+      }
+    };
+
+    // Update exam status display
+    function updateExamStatus(status) {
+      const statusBox = document.getElementById('examStatusBox');
+      const config = statusConfig[status];
+      
+      if (config) {
+        statusBox.innerHTML = `
+          <div class="exam-status-badge ${config.class}">
+            ${config.icon}
+            <span class="status-text">${config.label}</span>
+          </div>
+        `;
+        
+        // Add click handler to change status (for demo/testing)
+        statusBox.querySelector('.exam-status-badge').addEventListener('click', () => {
+          showStatusChangeModal();
+        });
+      }
+    }
+
+    // Show modal to change status (for admin/testing)
+    function showStatusChangeModal() {
+      const currentStatus = examStatus;
+      const statusOptions = Object.keys(statusConfig).map(key => {
+        const config = statusConfig[key];
+        return `
+          <button class="status-option-btn ${key === currentStatus ? 'active' : ''}" 
+                  onclick="changeExamStatus('${key}')" 
+                  data-status="${key}">
+            <div class="status-option-content">
+              ${config.icon}
+              <span>${config.label}</span>
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      const modal = document.createElement('div');
+      modal.className = 'status-modal';
+      modal.innerHTML = `
+        <div class="status-modal-overlay" onclick="closeStatusModal()"></div>
+        <div class="status-modal-content">
+          <div class="status-modal-header">
+            <h5>เปลี่ยนสถานะการสอบหัวข้อ</h5>
+            <button onclick="closeStatusModal()" class="btn-close-modal">×</button>
+          </div>
+          <div class="status-modal-body">
+            <p class="text-muted mb-3">เลือกสถานะการสอบหัวข้อ:</p>
+            <div class="status-options-grid">
+              ${statusOptions}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+      setTimeout(() => modal.classList.add('show'), 10);
+    }
+
+    // Change exam status
+    function changeExamStatus(newStatus) {
+      examStatus = newStatus;
+      updateExamStatus(newStatus);
+      closeStatusModal();
+      showToast(`สถานะการสอบเปลี่ยนเป็น: ${statusConfig[newStatus].label}`, 'info');
+    }
+
+    // Close status modal
+    function closeStatusModal() {
+      const modal = document.querySelector('.status-modal');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+      }
+    }
+
+    // Initialize exam status on page load
+    updateExamStatus(examStatus);
+
+    // Reports data storage
+    let reportsData = [
+      {
+        id: 1,
+        name: 'รายงานความก้าวหน้าสัปดาห์ที่ 1',
+        date: '2021-04-07',
+        files: ['report1.pdf'],
+        note: 'เอกสารครบถ้วน'
+      }
+    ];
+    let reportIdCounter = 2;
+    let editingReportId = null;
+
+    // File upload handling
+    document.getElementById('docFile').addEventListener('change', function(e) {
+      const fileList = document.getElementById('fileList');
+      fileList.innerHTML = '';
+      
+      if (this.files.length > 0) {
+        Array.from(this.files).forEach((file, index) => {
+          const fileItem = document.createElement('div');
+          fileItem.className = 'file-item';
+          fileItem.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <polyline points="13 2 13 9 20 9"></polyline>
+            </svg>
+            <span class="file-name">${file.name}</span>
+            <span class="file-size">(${(file.size / 1024).toFixed(2)} KB)</span>
+            <button type="button" class="btn-remove-file" onclick="removeFile(${index})">×</button>
+          `;
+          fileList.appendChild(fileItem);
+        });
+      }
+    });
+
+    // Remove file from list
+    function removeFile(index) {
+      const input = document.getElementById('docFile');
+      const dt = new DataTransfer();
+      const files = Array.from(input.files);
+      
+      files.splice(index, 1);
+      files.forEach(file => dt.items.add(file));
+      
+      input.files = dt.files;
+      input.dispatchEvent(new Event('change'));
+    }
+
+    // Form submission
+    document.getElementById('reportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = {
+        id: editingReportId || reportIdCounter++,
+        name: document.getElementById('docName').value,
+        date: document.getElementById('docDate').value,
+        files: Array.from(document.getElementById('docFile').files).map(f => f.name),
+        note: document.getElementById('docNote').value
+      };
+
+      if (editingReportId) {
+        // Update existing report
+        const index = reportsData.findIndex(r => r.id === editingReportId);
+        reportsData[index] = formData;
+        editingReportId = null;
+        showToast('แก้ไขรายงานสำเร็จ!', 'success');
+      } else {
+        // Add new report
+        reportsData.push(formData);
+        showToast('บันทึกรายงานสำเร็จ!', 'success');
+      }
+
+      // Reset form
+      this.reset();
+      document.getElementById('fileList').innerHTML = '';
+      
+      // Update table
+      updateReportsTable();
+      
+      // Update chart
+      updateChart();
+    });
+
+    // Update reports table
+    function updateReportsTable() {
+      const tbody = document.getElementById('reportsTableBody');
+      tbody.innerHTML = '';
+      
+      reportsData.forEach((report, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${report.name}</td>
+          <td>${formatDate(report.date)}</td>
+          <td>
+            ${report.files.map(file => `
+              <span class="file-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                  <polyline points="13 2 13 9 20 9"></polyline>
+                </svg>
+                ${file}
+              </span>
+            `).join('')}
+          </td>
+          <td>${report.note || '-'}</td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn-action btn-edit" onclick="editReport(${report.id})" title="แก้ไข">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+              </button>
+              <button class="btn-action btn-delete" onclick="deleteReport(${report.id})" title="ลบ">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    // Edit report
+    function editReport(id) {
+      const report = reportsData.find(r => r.id === id);
+      if (!report) return;
+
+      document.getElementById('docName').value = report.name;
+      document.getElementById('docDate').value = report.date;
+      document.getElementById('docNote').value = report.note;
+      
+      editingReportId = id;
+      
+      // Scroll to form
+      document.getElementById('reportForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+      showToast('กำลังแก้ไขรายงาน', 'info');
+    }
+
+    // Delete report
+    function deleteReport(id) {
+      if (confirm('คุณต้องการลบรายงานนี้ใช่หรือไม่?')) {
+        reportsData = reportsData.filter(r => r.id !== id);
+        updateReportsTable();
+        updateChart();
+        showToast('ลบรายงานสำเร็จ!', 'danger');
+      }
+    }
+
+    // Format date
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+
+    // Show toast notification
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = `alert alert-${type} position-fixed top-0 end-0 m-3 toast-notification`;
+      toast.style.zIndex = '9999';
+      toast.style.minWidth = '300px';
+      toast.innerHTML = `<strong>${message}</strong>`;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // Update chart based on reports data
+    function updateChart() {
+      const total = reportsData.length;
+      const completed = Math.floor(total * 0.7);
+      const pending = Math.floor(total * 0.2);
+      const revision = total - completed - pending;
+      
+      if (progressChart) {
+        progressChart.data.datasets[0].data = [
+          completed > 0 ? 70 : 0,
+          pending > 0 ? 20 : 0,
+          revision > 0 ? 10 : 0
+        ];
+        progressChart.update();
+      }
+    }
+
+    // Initialize Pie Chart with Chart.js
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    const progressChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['สำเร็จ', 'ยังไม่สำเร็จ', 'รอแก้ไข'],
+        datasets: [{
+          data: [70, 20, 10],
+          backgroundColor: [
+            '#4ade80', // Green
+            '#ef4444', // Red
+            '#fbbf24'  // Orange/Yellow
+          ],
+          borderWidth: 0,
+          hoverOffset: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.label + ': ' + context.parsed + '%';
+              }
+            },
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            padding: 12,
+            titleFont: {
+              size: 14,
+              family: "'Noto Sans Thai', sans-serif"
+            },
+            bodyFont: {
+              size: 13,
+              family: "'Noto Sans Thai', sans-serif"
+            }
+          },
+          datalabels: {
+            display: true,
+            color: '#ffffff',
+            font: {
+              size: 20,
+              weight: 'bold',
+              family: "'Noto Sans Thai', sans-serif"
+            },
+            formatter: function(value, context) {
+              return value + '%';
+            },
+            anchor: 'center',
+            align: 'center',
+            offset: 0
+          }
+        },
+        cutout: '30%',
+        animation: {
+          animateRotate: true,
+          animateScale: true,
+          duration: 1000,
+          easing: 'easeInOutQuart'
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+
+    // Store chart reference globally
+    window.progressChart = progressChart;
+
+    // Calendar functionality
+    const calendarDays = document.querySelectorAll('.calendar-day:not(.inactive)');
+    calendarDays.forEach(day => {
+      day.addEventListener('click', function() {
+        // Remove active class from all days
+        calendarDays.forEach(d => d.classList.remove('active'));
+        // Add active class to clicked day
+        this.classList.add('active');
+      });
+    });
+
+    // Remove old add button functionality
+    // Report card add button
+    // const addButton = document.querySelector('.btn-add-report');
+    // ... (removed)
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('.nav-item').forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Add ripple effect
+        const ripple = document.createElement('span');
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+        ripple.style.width = ripple.style.height = '100px';
+        ripple.style.left = '-50px';
+        ripple.style.top = '-50px';
+        ripple.style.animation = 'ripple 0.6s ease-out';
+        
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // Add ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Make calendar month/year interactive
+    const monthName = document.querySelector('.month-name');
+    const yearName = document.querySelector('.year-name');
+    
+    if (monthName && yearName) {
+      let currentMonth = 3; // April (0-indexed)
+      let currentYear = 2021;
+      
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                      'July', 'August', 'September', 'October', 'November', 'December'];
+      
+      const prevBtn = document.querySelector('.btn-calendar-nav:first-of-type');
+      const nextBtn = document.querySelector('.btn-calendar-nav:last-of-type');
+      
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          currentMonth--;
+          if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+          }
+          monthName.textContent = months[currentMonth];
+          yearName.textContent = currentYear + '.';
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          currentMonth++;
+          if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+          }
+          monthName.textContent = months[currentMonth];
+          yearName.textContent = currentYear + '.';
+        });
+      }
+    }
+
+    // Add hover effects to report cards
+    const reportCards = document.querySelectorAll('.report-card');
+    reportCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+        this.style.transition = 'all 0.3s ease';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>
