@@ -21,14 +21,13 @@
     <div class="container-fluid px-3">
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-2 top-left">
-          <button class="btn backchip" aria-label="ย้อนกลับ" onclick="window.history.back()"><span>&lsaquo;</span></button>
+          <button class="btn backchip" aria-label="ย้อนกลับ" onclick="window.location.href='register.html'">&lsaquo;</button>
           <input class="form-control form-control-sm search-pill" value="ลงทะเบียนผู้ใช้ใหม่ > อาจารย์" readonly />
         </div>
 
         <div class="d-flex align-items-center gap-3 top-right">
           <div class="subtitle small">Student Project Management System – Presentation Mockup</div>
           <div class="title">ระบบจัดการโครงการนักศึกษา</div>
-          <div class="avatar">S</div>
         </div>
       </div>
     </div>
@@ -49,16 +48,26 @@
           </div>
 
           <label class="form-label small fw-semibold mb-1">ชื่อผู้ใช้</label>
-          <input type="text" class="form-control slim mb-3" />
+          <input type="text" class="form-control slim mb-3" placeholder="กรอกชื่อผู้ใช้" />
 
           <label class="form-label small fw-semibold mb-1">รหัสผ่าน</label>
-          <input type="password" class="form-control slim mb-3" />
+          <input type="password" class="form-control slim mb-3" placeholder="กรอกรหัสผ่าน" />
 
-          <button class="btn btn-primary w-100 rounded-pill mb-3">เข้าสู่ระบบ</button>
+          <label class="form-label small fw-semibold mb-1">สิทธิ์การเข้าใช้</label>
+          <select id="userRole" class="form-select slim mb-3">
+            <option value="" selected disabled>เลือกสิทธิ์การเข้าใช้</option>
+            <option value="student">นักศึกษา</option>
+            <option value="advisor">อาจารย์ที่ปรึกษา</option>
+            <option value="subject_teacher">อาจารย์ประจำวิชา</option>
+            <option value="staff">บุคลากร</option>
+            <option value="admin">ผู้ดูแลระบบ</option>
+          </select>
+
+          <button id="loginBtn" class="btn btn-primary w-100 rounded-pill mb-3">เข้าสู่ระบบ</button>
 
           <div class="links small">
-            <div class="link-item"><span class="arrow">→</span> ลงทะเบียนผู้ใช้ใหม่</div>
-            <div class="link-item"><span class="arrow">→</span> ลืมรหัสผ่าน</div>
+            <div class="link-item" onclick="window.location.href='register.html'" style="cursor: pointer;"><span class="arrow">→</span> ลงทะเบียนผู้ใช้ใหม่</div>
+            <div class="link-item" onclick="window.location.href='forgot_password.html'" style="cursor: pointer;"><span class="arrow">→</span> ลืมรหัสผ่าน</div>
           </div>
         </div>
       </div>
@@ -107,7 +116,7 @@
 
                 <!-- Submit Button -->
                 <div class="text-end">
-                  <a type="submit" class="btn btn-success btn-submit px-5 py-2" href="../src/admin/admin.html">ยืนยัน</a>
+                  <a type="submit" class="btn btn-success btn-submit px-5 py-2" href="teacher/teacher_adv_home.html">ยืนยัน</a>
                 </div>
 
               </form>
@@ -120,5 +129,36 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Login Navigation Script
+    document.getElementById('loginBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const userRole = document.getElementById('userRole').value;
+      
+      // กำหนด path ตามสิทธิ์
+      const rolePaths = {
+        'student': 'student/student.html',
+        'advisor': 'teacher/teacher_adv_home.html',
+        'subject_teacher': 'teacher/teacher_sub_home.html',
+        'staff': 'staff/staff.html',
+        'admin': 'admin/admin.html'
+      };
+      
+      // ตรวจสอบว่าเลือกสิทธิ์แล้วหรือยัง
+      if (!userRole || userRole === '') {
+        alert('กรุณาเลือกสิทธิ์การเข้าใช้');
+        return;
+      }
+      
+      // นำทางไปยังหน้าที่เหมาะสม
+      if (rolePaths[userRole]) {
+        window.location.href = rolePaths[userRole];
+      } else {
+        alert('ไม่พบหน้าสำหรับสิทธิ์นี้');
+      }
+    });
+  </script>
 </body>
 </html>

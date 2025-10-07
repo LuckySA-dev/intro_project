@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ระบบจัดการโครงการ – Comment</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../style/style.css" />
+</head>
+<body class="student-dashboard">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="container-fluid px-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2 top-left">
+          <button class="btn btn-icon-home" aria-label="หน้าหลัก" onclick="location.href='teacher_sub_home.html'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </button>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text">Home</span>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text fw-semibold">Comment</span>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 top-right">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" placeholder="Search" class="search-input" />
+          </div>
+          <button class="btn btn-icon-notif">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+          <div class="avatar">T</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="dashboard-wrap container-fluid">
+    <div class="row g-3">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="col-12 col-lg-auto">
+        <aside class="sidebar">
+          <div class="logo-section">
+            <div class="logo-img">
+              <img src="../../img/logo.png" alt="Logo" height="100%" width="100%">
+            </div>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="teacher_sub_home.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              <span>ติดตามโครงการทั้งหมดในวิชาและลงชื่อรับรอง</span>
+            </a>
+
+            <a href="teacher_sub_dashboard.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>รายการมีโครงการรอการรับรอง</span>
+            </a>
+
+            <a href="teacher_join_sub.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>อาจารย์ที่ปรึกษาร่วม</span>
+            </a>
+
+            <a href="teacher_sub_comment.html" class="nav-item active">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Comment</span>
+            </a>
+          </nav>
+
+          <div class="sidebar-footer">
+            <a href="../../../index.html" class="nav-item nav-item-special">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>หน้าหลัก Login</span>
+            </a>
+            
+            <a href="../../../index.html" class="nav-item nav-item-logout mt-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>ออกจากระบบ</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="col-12 col-lg">
+        <div class="content-area">
+          
+          <!-- Student Comments Section -->
+          <div class="card-widget comment-card">
+            <div class="widget-header comment-section-header">
+              <h6 class="widget-title">นักศึกษา</h6>
+            </div>
+            <div class="widget-body comment-section-body">
+              
+              <div class="comment-thread-new">
+                <!-- Student Avatar -->
+                <div class="comment-user-avatar-new">
+                  <div class="avatar-circle-new">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Comment Input Area -->
+                <div class="comment-input-wrapper-new">
+                  <div class="comment-input-box-new">
+                    <textarea 
+                      class="form-control comment-textarea-new" 
+                      placeholder="........................................................................................................................................................................................................................................................................................"
+                      rows="3"
+                      id="studentComment"></textarea>
+                  </div>
+                  <div class="comment-actions-new">
+                    <span class="comment-action-label">ตอบกลับ</span>
+                    <button type="button" class="btn-submit-comment-new" onclick="submitStudentComment()">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teacher Comments Section -->
+          <div class="card-widget comment-card mt-3">
+            <div class="widget-header comment-section-header">
+              <h6 class="widget-title">อาจารย์ที่ปรึกษาร่วม</h6>
+            </div>
+            <div class="widget-body comment-section-body">
+              
+              <div class="comment-thread-new">
+                <!-- Teacher Avatar -->
+                <div class="comment-user-avatar-new">
+                  <div class="avatar-circle-new">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Comment Input Area -->
+                <div class="comment-input-wrapper-new">
+                  <div class="comment-input-box-new">
+                    <textarea 
+                      class="form-control comment-textarea-new" 
+                      placeholder="........................................................................................................................................................................................................................................................................................"
+                      rows="3"
+                      id="teacherComment"></textarea>
+                  </div>
+                  <div class="comment-actions-new">
+                    <span class="comment-action-label">ตอบกลับ</span>
+                    <button type="button" class="btn-submit-comment-new" onclick="submitTeacherComment()">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comments History -->
+          <div class="comments-history-new mt-3" id="commentsHistory">
+            <!-- Comments will be displayed here -->
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Comments storage
+    let comments = [];
+
+    function submitStudentComment() {
+      const commentText = document.getElementById('studentComment').value;
+      
+      if (!commentText.trim()) {
+        alert('กรุณากรอกความคิดเห็น');
+        return;
+      }
+      
+      addComment('student', commentText);
+      document.getElementById('studentComment').value = '';
+    }
+
+    function submitTeacherComment() {
+      const commentText = document.getElementById('teacherComment').value;
+      
+      if (!commentText.trim()) {
+        alert('กรุณากรอกความคิดเห็น');
+        return;
+      }
+      
+      addComment('teacher', commentText);
+      document.getElementById('teacherComment').value = '';
+    }
+
+    function addComment(userType, text) {
+      const comment = {
+        id: Date.now(),
+        type: userType,
+        text: text,
+        timestamp: new Date().toLocaleString('th-TH')
+      };
+      
+      comments.unshift(comment);
+      renderComments();
+    }
+
+    function renderComments() {
+      const historyContainer = document.getElementById('commentsHistory');
+      historyContainer.innerHTML = '';
+      
+      comments.forEach(comment => {
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'card-widget comment-card mb-2';
+        commentDiv.innerHTML = `
+          <div class="widget-body">
+            <div class="comment-thread-new">
+              <div class="comment-user-avatar-new">
+                <div class="avatar-circle-new">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+              </div>
+              <div class="comment-content-new">
+                <div class="comment-header-info">
+                  <span class="comment-author">${comment.type === 'student' ? 'นักศึกษา' : 'อาจารย์ที่ปรึกษาร่วม'}</span>
+                  <span class="comment-timestamp">${comment.timestamp}</span>
+                </div>
+                <div class="comment-text-content">
+                  ${comment.text}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        historyContainer.appendChild(commentDiv);
+      });
+    }
+  </script>
+</body>
+</html>

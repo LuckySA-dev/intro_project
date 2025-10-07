@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ระบบจัดการโครงการ – ตรวจสอบเอกสารก่อนสอบ</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../style/style.css" />
+</head>
+<body class="student-dashboard">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="container-fluid px-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2 top-left">
+          <button class="btn btn-icon-home" aria-label="หน้าหลัก" onclick="location.href='teacher_adv_home.html'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </button>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text">Home</span>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text fw-semibold">ตรวจสอบเอกสาร</span>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 top-right">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" placeholder="Search" class="search-input" />
+          </div>
+          <button class="btn btn-icon-notif">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+          <div class="avatar">T</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="dashboard-wrap container-fluid">
+    <div class="row g-3">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="col-12 col-lg-auto">
+        <aside class="sidebar">
+          <div class="logo-section">
+            <div class="logo-img">
+              <img src="../../img/logo.png" alt="Logo" height="100%" width="100%">
+            </div>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="teacher_adv_home.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>หน้าหลัก</span>
+            </a>
+
+            <a href="teacher_adv_process.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              <span>การรับเสนอการปรึกษาและการคืบหน้า</span>
+            </a>
+
+            <a href="teacher_adv_exam.html" class="nav-item active">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>การสอบหัวข้อ</span>
+            </a>
+
+            <a href="teacher_adv_dashboard.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>รายชื่อสมรู</span>
+            </a>
+
+            <a href="teacher_join_adv.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>อาจารย์ที่ปรึกษาร่วม</span>
+            </a>
+
+            <a href="teacher_comment.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Comment</span>
+            </a>
+          </nav>
+
+          <div class="sidebar-footer">
+            <a href="../../../index.html" class="nav-item nav-item-special">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>หน้าหลัก Login</span>
+            </a>
+            
+            <a href="../../../index.html" class="nav-item nav-item-logout mt-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>ออกจากระบบ</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="col-12 col-lg">
+        <div class="content-area">
+          
+          <!-- Document Check Section -->
+          <div class="card-widget" style="background: #fff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 24px; margin-bottom: 20px;">
+            <div class="widget-header" style="margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #f0f0f0;">
+              <h5 class="widget-title" style="color: #333; font-weight: 600; margin: 0;">ตรวจสอบเอกสารก่อนสอบ</h5>
+            </div>
+            <div class="widget-body">
+              
+              <div class="document-check-section">
+                <div class="check-header mb-3">
+                  <p class="check-note" style="color: #666; font-size: 14px; margin: 0;">*ไฟล์ PDF ของโปรเจกต์จากนักศึกษา</p>
+                </div>
+
+                <!-- Comment Section -->
+                <div class="comment-section mb-4" style="background: #f8f9fa; border-radius: 12px; padding: 20px; margin-top: 20px;">
+                  <label for="documentComment" style="color: #333; font-size: 14px; font-weight: 600; margin-bottom: 10px; display: block;">
+                    💬 ความคิดเห็น / ข้อเสนอแนะ
+                  </label>
+                  <textarea 
+                    id="documentComment" 
+                    class="form-control" 
+                    rows="4" 
+                    placeholder="กรุณาระบุความคิดเห็นหรือข้อเสนอแนะเกี่ยวกับเอกสาร..."
+                    style="border: 2px solid #e0e0e0; border-radius: 10px; padding: 12px; font-size: 14px; resize: vertical; transition: all 0.3s;"
+                    onfocus="this.style.borderColor='#2196F3'; this.style.boxShadow='0 0 0 3px rgba(33,150,243,0.1)'"
+                    onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none'"
+                  ></textarea>
+                  <small style="color: #666; font-size: 12px; margin-top: 6px; display: block;">
+                    ความคิดเห็นนี้จะถูกส่งให้นักศึกษาเพื่อปรับปรุงเอกสาร
+                  </small>
+                </div>
+
+                <div class="document-actions d-flex gap-3 mb-4" style="margin-top: 20px;">
+                  <button class="btn" onclick="downloadDocument()" style="background: #FFA726; color: #fff; border: none; padding: 10px 24px; border-radius: 12px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(255,167,38,0.3); transition: all 0.3s;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    ดาวน์โหลด
+                  </button>
+                  <button class="btn" onclick="submitComment()" style="background: #2196F3; color: #fff; border: none; padding: 10px 24px; border-radius: 12px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(33,150,243,0.3); transition: all 0.3s;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    ส่ง Comment
+                  </button>
+                  <button class="btn" onclick="approveDocument()" style="background: #4CAF50; color: #fff; border: none; padding: 10px 24px; border-radius: 12px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(76,175,80,0.3); transition: all 0.3s;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    อนุมัติ
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exam Status Section -->
+          <div class="card-widget" style="background: #fff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 24px;">
+            <div class="widget-header" style="margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #f0f0f0;">
+              <h5 class="widget-title" style="color: #333; font-weight: 600; margin: 0;">สถานะการสอบหัวข้อ</h5>
+            </div>
+            <div class="widget-body">
+              
+              <!-- Project Details -->
+              <div class="project-details-section mb-4">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="detail-item" style="background: #f8f9fa; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+                      <div class="detail-label" style="color: #666; font-size: 13px; font-weight: 500; margin-bottom: 6px;">ชื่อโปรเจ็ค</div>
+                      <div class="detail-value" style="color: #333; font-size: 15px; font-weight: 600;">ระบบจัดการคลังสินค้าอัจฉริยะด้วย IoT และ AI</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item" style="background: #f8f9fa; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+                      <div class="detail-label" style="color: #666; font-size: 13px; font-weight: 500; margin-bottom: 6px;">รหัสโปรเจ็ค</div>
+                      <div class="detail-value" style="color: #2196F3; font-size: 15px; font-weight: 600;">PRJ-2025-001</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item" style="background: #f8f9fa; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+                      <div class="detail-label" style="color: #666; font-size: 13px; font-weight: 500; margin-bottom: 6px;">นักศึกษา</div>
+                      <div class="detail-value" style="color: #333; font-size: 15px;">
+                        <div style="margin-bottom: 4px;">🧑‍🎓 นายสมชาย ใจดี (6501234567)</div>
+                        <div>👩‍🎓 นางสาววิภา สุขใจ (6501234568)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item" style="background: #f8f9fa; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+                      <div class="detail-label" style="color: #666; font-size: 13px; font-weight: 500; margin-bottom: 6px;">วันที่สอบ</div>
+                      <div class="detail-value" style="color: #333; font-size: 15px; font-weight: 600;">
+                        📅 15 พฤษภาคม 2568 เวลา 13:00 น.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="detail-item" style="background: #fff3e0; border-radius: 12px; padding: 16px; border: 2px solid #ffb74d;">
+                      <div class="detail-label" style="color: #e65100; font-size: 13px; font-weight: 600; margin-bottom: 8px;">📝 คำอธิบายโปรเจ็ค</div>
+                      <div class="detail-value" style="color: #555; font-size: 14px; line-height: 1.6;">
+                        พัฒนาระบบจัดการคลังสินค้าที่ใช้เทคโนโลยี IoT เพื่อติดตามสินค้าแบบเรียลไทม์ ผสานกับ AI ในการวิเคราะห์และคาดการณ์ความต้องการสินค้า ระบบสามารถแจ้งเตือนอัตโนมัติเมื่อสินค้าใกล้หมด และจัดการการจัดเก็บสินค้าอย่างมีประสิทธิภาพ
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="exam-status-section">
+                <div class="status-info mb-4">
+                  <p class="status-description" style="color: #333; font-size: 15px; font-weight: 600; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #e0e0e0;">📋 ผลการตรวจ:</p>
+                  
+                  <div class="status-details" style="background: #f5f5f5; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+                    <h6 style="color: #333; font-size: 14px; font-weight: 600; margin-bottom: 12px;">✅ รายละเอียด</h6>
+                    <ul style="list-style: none; padding-left: 0; margin: 0;">
+                      <li style="color: #555; font-size: 14px; padding: 8px 0; padding-left: 24px; position: relative; border-bottom: 1px solid #e0e0e0;">
+                        <span style="position: absolute; left: 0; top: 12px; color: #4CAF50; font-size: 16px;">✓</span>
+                        เอกสารครบถ้วนตามที่กำหนด
+                      </li>
+                      <li style="color: #555; font-size: 14px; padding: 8px 0; padding-left: 24px; position: relative; border-bottom: 1px solid #e0e0e0;">
+                        <span style="position: absolute; left: 0; top: 12px; color: #4CAF50; font-size: 16px;">✓</span>
+                        รูปแบบการนำเสนอถูกต้อง
+                      </li>
+                      <li style="color: #555; font-size: 14px; padding: 8px 0; padding-left: 24px; position: relative; border-bottom: 1px solid #e0e0e0;">
+                        <span style="position: absolute; left: 0; top: 12px; color: #4CAF50; font-size: 16px;">✓</span>
+                        เนื้อหามีความชัดเจนและครบถ้วน
+                      </li>
+                      <li style="color: #555; font-size: 14px; padding: 8px 0; padding-left: 24px; position: relative;">
+                        <span style="position: absolute; left: 0; top: 12px; color: #4CAF50; font-size: 16px;">✓</span>
+                        อ้างอิงแหล่งที่มาถูกต้อง
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="improvement-notes" style="background: #e3f2fd; border-radius: 12px; padding: 20px; border-left: 4px solid #2196F3;">
+                    <h6 style="color: #1976D2; font-size: 14px; font-weight: 600; margin-bottom: 12px;">💡 ข้อปรับปรุง</h6>
+                    <ul style="list-style: none; padding-left: 0; margin: 0;">
+                      <li style="color: #555; font-size: 14px; padding: 6px 0; padding-left: 24px; position: relative;">
+                        <span style="position: absolute; left: 0; top: 10px; color: #2196F3;">•</span>
+                        ควรเพิ่มรายละเอียดเกี่ยวกับการทดสอบระบบให้มากขึ้น
+                      </li>
+                      <li style="color: #555; font-size: 14px; padding: 6px 0; padding-left: 24px; position: relative;">
+                        <span style="position: absolute; left: 0; top: 10px; color: #2196F3;">•</span>
+                        แนะนำให้เพิ่มตัวอย่าง Use Case เพิ่มเติม
+                      </li>
+                      <li style="color: #555; font-size: 14px; padding: 6px 0; padding-left: 24px; position: relative;">
+                        <span style="position: absolute; left: 0; top: 10px; color: #2196F3;">•</span>
+                        ปรับปรุงส่วนของ Timeline ให้ชัดเจนขึ้น
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="status-display d-flex justify-content-end align-items-center" style="margin-top: 30px;">
+                  <div class="status-label" style="color: #666; font-size: 15px; margin-right: 20px; font-weight: 500;">สถานะการตรวจ</div>
+                  <div class="status-badge-card" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 16px; padding: 16px 28px; display: flex; align-items: center; gap: 12px; box-shadow: 0 3px 10px rgba(76,175,80,0.2); min-width: 140px; justify-content: center;">
+                    <div class="status-icon" style="background: #4CAF50; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                    </div>
+                    <div class="status-text" style="color: #2e7d32; font-weight: 600; font-size: 16px;">ผ่าน</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <style>
+    /* Button hover effects */
+    .document-actions button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    }
+
+    .document-actions button:active {
+      transform: translateY(0);
+    }
+
+    /* Card widget improvements */
+    .card-widget {
+      transition: all 0.3s ease;
+    }
+
+    .card-widget:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
+    }
+
+    /* Status badge animation */
+    .status-badge-card {
+      transition: all 0.3s ease;
+    }
+
+    .status-badge-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .document-actions {
+        flex-direction: column;
+      }
+
+      .document-actions button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .status-display {
+        justify-content: center !important;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+  
+  <script>
+    function downloadDocument() {
+      // Simulate document download
+      alert('กำลังดาวน์โหลดเอกสาร...');
+      console.log('Downloading document...');
+    }
+
+    function submitComment() {
+      const comment = document.getElementById('documentComment').value.trim();
+      
+      if (!comment) {
+        alert('กรุณากรอกความคิดเห็นก่อนส่ง');
+        return;
+      }
+      
+      if (confirm('ต้องการส่งความคิดเห็นนี้ให้นักศึกษาหรือไม่?')) {
+        alert('ส่งความคิดเห็นเรียบร้อยแล้ว\n\nความคิดเห็น: ' + comment);
+        console.log('Comment submitted:', comment);
+        // Clear the comment field after submission
+        document.getElementById('documentComment').value = '';
+      }
+    }
+
+    function approveDocument() {
+      // Simulate document approval
+      if (confirm('ต้องการอนุมัติเอกสารนี้หรือไม่?')) {
+        alert('อนุมัติเอกสารเรียบร้อยแล้ว');
+        console.log('Document approved');
+      }
+    }
+  </script>
+</body>
+</html>

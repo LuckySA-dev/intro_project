@@ -87,15 +87,13 @@
 
             <a href="admin_exam.html" class="nav-item active">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
               </svg>
               <span>กำหนดกรรมการสอบ</span>
             </a>
 
-            <a href="admin_project.html" class="nav-item">
+            <a href="admin_setting.html" class="nav-item">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
@@ -105,17 +103,26 @@
               </svg>
               <span>รายงานสรุปโครงการ</span>
             </a>
-
-            <a href="admin_setting.html" class="nav-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M12 1v6m0 6v6"></path>
-                <path d="m1 12 6-6m6 6 6-6"></path>
-                <path d="m1 12 6 6m6-6 6 6"></path>
-              </svg>
-              <span>การตั้งค่าระบบ</span>
-            </a>
           </nav>
+
+          <div class="sidebar-footer">
+            <a href="../../../index.html" class="nav-item nav-item-special">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>หน้าหลัก Login</span>
+            </a>
+            
+            <a href="../../../index.html" class="nav-item nav-item-logout mt-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>ออกจากระบบ</span>
+            </a>
+          </div>
         </aside>
       </div>
 
@@ -123,47 +130,277 @@
       <div class="col-12 col-lg">
         <div class="content-area">
           
-          <!-- Exam Management Cards -->
-          <div class="row g-3 mb-4">
-            <div class="col-12 col-md-6">
-              <div class="card-widget exam-manage-card">
-                <div class="exam-manage-header">
-                  <h6 class="exam-manage-title">จัดการสอบหัวข้อ</h6>
-                </div>
-                <div class="exam-manage-body">
-                  <div class="exam-placeholder">
-                    <!-- Content placeholder -->
-                  </div>
-                </div>
-              </div>
-            </div>
+          <!-- Top Action Buttons Card -->
+          <div class="card-widget mb-4" style="border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+            <div class="p-3 d-flex gap-3">
+              <button class="btn btn-primary" style="border-radius: 10px; padding: 10px 24px; font-weight: 500;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                ตารางสอบหัวข้อ
+              </button>
 
-            <div class="col-12 col-md-6">
-              <div class="card-widget exam-manage-card">
-                <div class="exam-manage-header">
-                  <h6 class="exam-manage-title">จัดการสอบงาน</h6>
-                </div>
-                <div class="exam-manage-body">
-                  <div class="exam-placeholder">
-                    <!-- Content placeholder -->
-                  </div>
-                </div>
-              </div>
+              <button class="btn btn-outline-primary" style="border-radius: 10px; padding: 10px 24px; font-weight: 500;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                ตารางสอบงาน
+              </button>
             </div>
           </div>
 
-          <!-- Committee Form Section -->
-          <div class="card-widget">
-            <div class="committee-header">
-              <h6 class="committee-title">มอบหมายกรรมการ</h6>
+          <!-- Assignment Table Section -->
+          <div class="card-widget" style="border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <div class="p-4 border-bottom" style="background: #f8f9fa; border-radius: 16px 16px 0 0;">
+              <h5 class="mb-0 fw-semibold" style="color: #2c3e50;">มอบหมายงานกรรมการสอบ</h5>
             </div>
-            <div class="committee-body">
-              <form id="committeeForm">
-                <div class="form-placeholder">
-                  <!-- Form content area -->
-                  <p class="text-muted text-center py-5">เลือกการสอบเพื่อมอบหมายกรรมการ</p>
-                </div>
-              </form>
+            
+            <div class="p-4">
+              <!-- Assignment Table -->
+              <div class="table-responsive">
+                <table class="table table-hover align-middle" style="border-collapse: separate; border-spacing: 0;">
+                  <thead style="background: #f8f9fa;">
+                    <tr>
+                      <th class="fw-semibold" style="padding: 16px; border-bottom: 2px solid #dee2e6;">ชื่อโปรเจ็ค</th>
+                      <th class="fw-semibold" style="padding: 16px; border-bottom: 2px solid #dee2e6;">ผู้รับผิดชอบ</th>
+                      <th class="fw-semibold" style="padding: 16px; border-bottom: 2px solid #dee2e6;">กรรมการ</th>
+                      <th class="fw-semibold text-center" style="padding: 16px; border-bottom: 2px solid #dee2e6;">สถานะ</th>
+                      <th class="fw-semibold text-center" style="padding: 16px; border-bottom: 2px solid #dee2e6;">จัดการ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Project 1 -->
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                      <td style="padding: 18px;">
+                        <div class="fw-semibold" style="color: #2c3e50; font-size: 0.95rem;">ระบบจัดการโครงการนักศึกษาออนไลน์</div>
+                        <small class="text-muted">รหัส: PR2024-001</small>
+                      </td>
+                      <td style="padding: 18px;">
+                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#responsibleModal1" style="border-radius: 8px; padding: 8px 16px; font-weight: 500;">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                          </svg>
+                          ดูรายชื่อ
+                        </button>
+                      </td>
+                      <td style="padding: 18px;">
+                        <select class="form-select form-select-sm" style="border-radius: 8px; font-size: 0.9rem;">
+                          <option selected>อ.ดร.ประสิทธิ์ แสงทอง</option>
+                          <option>ผศ.ดร.วิชัย สุขสันต์</option>
+                          <option>อ.สุดา มั่นคง</option>
+                        </select>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <span class="badge" style="background: #4CAF50; padding: 6px 12px; border-radius: 6px; font-weight: 500;">อนุมัติ</span>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <div class="d-flex gap-2 justify-content-center">
+                          <button class="btn btn-sm btn-success" style="border-radius: 6px; padding: 6px 12px;" title="อนุมัติ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                          </button>
+                          <button class="btn btn-sm btn-danger" style="border-radius: 6px; padding: 6px 12px;" title="ตีกลับ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <line x1="18" y1="6" x2="6" y2="18"></line>
+                              <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Project 2 -->
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                      <td style="padding: 18px;">
+                        <div class="fw-semibold" style="color: #2c3e50; font-size: 0.95rem;">แอปพลิเคชันจัดการร้านอาหาร</div>
+                        <small class="text-muted">รหัส: PR2024-002</small>
+                      </td>
+                      <td style="padding: 18px;">
+                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#responsibleModal2" style="border-radius: 8px; padding: 8px 16px; font-weight: 500;">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                          </svg>
+                          ดูรายชื่อ
+                        </button>
+                      </td>
+                      <td style="padding: 18px;">
+                        <select class="form-select form-select-sm" style="border-radius: 8px; font-size: 0.9rem;">
+                          <option>อ.ดร.ประสิทธิ์ แสงทอง</option>
+                          <option selected>ผศ.ดร.วิชัย สุขสันต์</option>
+                          <option>อ.สุดา มั่นคง</option>
+                        </select>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <span class="badge" style="background: #FF9800; padding: 6px 12px; border-radius: 6px; font-weight: 500;">รอดำเนินการ</span>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <div class="d-flex gap-2 justify-content-center">
+                          <button class="btn btn-sm btn-success" style="border-radius: 6px; padding: 6px 12px;" title="อนุมัติ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                          </button>
+                          <button class="btn btn-sm btn-danger" style="border-radius: 6px; padding: 6px 12px;" title="ตีกลับ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <line x1="18" y1="6" x2="6" y2="18"></line>
+                              <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Project 3 -->
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                      <td style="padding: 18px;">
+                        <div class="fw-semibold" style="color: #2c3e50; font-size: 0.95rem;">ระบบจองห้องประชุมออนไลน์</div>
+                        <small class="text-muted">รหัส: PR2024-003</small>
+                      </td>
+                      <td style="padding: 18px;">
+                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#responsibleModal3" style="border-radius: 8px; padding: 8px 16px; font-weight: 500;">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                          </svg>
+                          ดูรายชื่อ
+                        </button>
+                      </td>
+                      <td style="padding: 18px;">
+                        <select class="form-select form-select-sm" style="border-radius: 8px; font-size: 0.9rem;">
+                          <option>อ.ดร.ประสิทธิ์ แสงทอง</option>
+                          <option>ผศ.ดร.วิชัย สุขสันต์</option>
+                          <option selected>อ.สุดา มั่นคง</option>
+                        </select>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <span class="badge" style="background: #f44336; padding: 6px 12px; border-radius: 6px; font-weight: 500;">ตีกลับ</span>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <div class="d-flex gap-2 justify-content-center">
+                          <button class="btn btn-sm btn-success" style="border-radius: 6px; padding: 6px 12px;" title="อนุมัติ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                          </button>
+                          <button class="btn btn-sm btn-danger" style="border-radius: 6px; padding: 6px 12px;" title="ตีกลับ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <line x1="18" y1="6" x2="6" y2="18"></line>
+                              <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Project 4 -->
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                      <td style="padding: 18px;">
+                        <div class="fw-semibold" style="color: #2c3e50; font-size: 0.95rem;">เว็บไซต์อีคอมเมิร์ซสินค้าแฮนด์เมด</div>
+                        <small class="text-muted">รหัส: PR2024-004</small>
+                      </td>
+                      <td style="padding: 18px;">
+                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#responsibleModal4" style="border-radius: 8px; padding: 8px 16px; font-weight: 500;">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                          </svg>
+                          ดูรายชื่อ
+                        </button>
+                      </td>
+                      <td style="padding: 18px;">
+                        <select class="form-select form-select-sm" style="border-radius: 8px; font-size: 0.9rem;">
+                          <option selected>อ.ดร.ประสิทธิ์ แสงทอง</option>
+                          <option>ผศ.ดร.วิชัย สุขสันต์</option>
+                          <option>อ.สุดา มั่นคง</option>
+                        </select>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <span class="badge" style="background: #4CAF50; padding: 6px 12px; border-radius: 6px; font-weight: 500;">อนุมัติ</span>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <div class="d-flex gap-2 justify-content-center">
+                          <button class="btn btn-sm btn-success" style="border-radius: 6px; padding: 6px 12px;" title="อนุมัติ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                          </button>
+                          <button class="btn btn-sm btn-danger" style="border-radius: 6px; padding: 6px 12px;" title="ตีกลับ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <line x1="18" y1="6" x2="6" y2="18"></line>
+                              <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Project 5 -->
+                    <tr>
+                      <td style="padding: 18px;">
+                        <div class="fw-semibold" style="color: #2c3e50; font-size: 0.95rem;">แอปพลิเคชันติดตามสุขภาพ</div>
+                        <small class="text-muted">รหัส: PR2024-005</small>
+                      </td>
+                      <td style="padding: 18px;">
+                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#responsibleModal5" style="border-radius: 8px; padding: 8px 16px; font-weight: 500;">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                          </svg>
+                          ดูรายชื่อ
+                        </button>
+                      </td>
+                      <td style="padding: 18px;">
+                        <select class="form-select form-select-sm" style="border-radius: 8px; font-size: 0.9rem;">
+                          <option>อ.ดร.ประสิทธิ์ แสงทอง</option>
+                          <option selected>ผศ.ดร.วิชัย สุขสันต์</option>
+                          <option>อ.สุดา มั่นคง</option>
+                        </select>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <span class="badge" style="background: #FF9800; padding: 6px 12px; border-radius: 6px; font-weight: 500;">รอดำเนินการ</span>
+                      </td>
+                      <td class="text-center" style="padding: 18px;">
+                        <div class="d-flex gap-2 justify-content-center">
+                          <button class="btn btn-sm btn-success" style="border-radius: 6px; padding: 6px 12px;" title="อนุมัติ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                          </button>
+                          <button class="btn btn-sm btn-danger" style="border-radius: 6px; padding: 6px 12px;" title="ตีกลับ">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <line x1="18" y1="6" x2="6" y2="18"></line>
+                              <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Footer Info -->
+              <div class="mt-3 text-muted" style="font-size: 0.9rem;">
+                <small>แสดง 5 โปรเจ็ค จากทั้งหมด 5 โปรเจ็ค</small>
+              </div>
+
             </div>
           </div>
 
@@ -172,6 +409,398 @@
 
     </div>
   </main>
+
+  <!-- Modal 1: ระบบจัดการโครงการนักศึกษาออนไลน์ -->
+  <div class="modal fade" id="responsibleModal1" tabindex="-1" aria-labelledby="responsibleModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 16px; border: none;">
+        <div class="modal-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 16px 16px 0 0;">
+          <h5 class="modal-title fw-semibold" id="responsibleModal1Label">รายชื่อผู้รับผิดชอบโปรเจ็ค</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <h6 class="fw-semibold mb-3" style="color: #2c3e50;">ระบบจัดการโครงการนักศึกษาออนไลน์</h6>
+          <p class="text-muted mb-4"><small>รหัส: PR2024-001</small></p>
+          
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👨‍🏫 อาจารย์ที่ปรึกษา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #667eea; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ส
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">อ.ดร.สมชาย วงศ์ดี</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">📚 อาจารย์ประจำวิชา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #4CAF50; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ป
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">อ.ดร.ประสิทธิ์ แสงทอง</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #FF9800; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ว
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">ผศ.ดร.วิชัย สุขสันต์</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👥 สมาชิกในทีม</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #2196F3; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นายสมศักดิ์ ใจดี</div>
+                  <small class="text-muted">รหัส: 6401234567</small>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #9C27B0; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นางสาววิไล สุขสำราญ</div>
+                  <small class="text-muted">รหัส: 6401234568</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top: 1px solid #e9ecef;">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: แอปพลิเคชันจัดการร้านอาหาร -->
+  <div class="modal fade" id="responsibleModal2" tabindex="-1" aria-labelledby="responsibleModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 16px; border: none;">
+        <div class="modal-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 16px 16px 0 0;">
+          <h5 class="modal-title fw-semibold" id="responsibleModal2Label">รายชื่อผู้รับผิดชอบโปรเจ็ค</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <h6 class="fw-semibold mb-3" style="color: #2c3e50;">แอปพลิเคชันจัดการร้านอาหาร</h6>
+          <p class="text-muted mb-4"><small>รหัส: PR2024-002</small></p>
+          
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👨‍🏫 อาจารย์ที่ปรึกษา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #f093fb; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ว
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">ผศ.ดร.วิไล แก้วมณี</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">📚 อาจารย์ประจำวิชา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #00BCD4; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ส
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">อ.สุดา มั่นคง</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👥 สมาชิกในทีม</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #FF9800; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นายประสิทธิ์ มั่นคง</div>
+                  <small class="text-muted">รหัส: 6401234569</small>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #9C27B0; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นางสาวสุดา ทองดี</div>
+                  <small class="text-muted">รหัส: 6401234570</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top: 1px solid #e9ecef;">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: ระบบจองห้องประชุมออนไลน์ -->
+  <div class="modal fade" id="responsibleModal3" tabindex="-1" aria-labelledby="responsibleModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 16px; border: none;">
+        <div class="modal-header" style="background: linear-gradient(135deg, #2196F3 0%, #00BCD4 100%); color: white; border-radius: 16px 16px 0 0;">
+          <h5 class="modal-title fw-semibold" id="responsibleModal3Label">รายชื่อผู้รับผิดชอบโปรเจ็ค</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <h6 class="fw-semibold mb-3" style="color: #2c3e50;">ระบบจองห้องประชุมออนไลน์</h6>
+          <p class="text-muted mb-4"><small>รหัส: PR2024-003</small></p>
+          
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👨‍🏫 อาจารย์ที่ปรึกษา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #2196F3; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ป
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">อ.ดร.ประเสริฐ นวลใย</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #00BCD4; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  จ
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">ผศ.ดร.จินตนา บุญมี</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">📚 อาจารย์ประจำวิชา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #4CAF50; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ว
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">ผศ.ดร.วิชัย สุขสันต์</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👥 สมาชิกในทีม</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #00BCD4; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นายวิชัย แสงสว่าง</div>
+                  <small class="text-muted">รหัส: 6401234571</small>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #3F51B5; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นางสาวจิตรา รุ่งเรือง</div>
+                  <small class="text-muted">รหัส: 6401234572</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top: 1px solid #e9ecef;">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: เว็บไซต์อีคอมเมิร์ซสินค้าแฮนด์เมด -->
+  <div class="modal fade" id="responsibleModal4" tabindex="-1" aria-labelledby="responsibleModal4Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 16px; border: none;">
+        <div class="modal-header" style="background: linear-gradient(135deg, #9C27B0 0%, #E91E63 100%); color: white; border-radius: 16px 16px 0 0;">
+          <h5 class="modal-title fw-semibold" id="responsibleModal4Label">รายชื่อผู้รับผิดชอบโปรเจ็ค</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <h6 class="fw-semibold mb-3" style="color: #2c3e50;">เว็บไซต์อีคอมเมิร์ซสินค้าแฮนด์เมด</h6>
+          <p class="text-muted mb-4"><small>รหัส: PR2024-004</small></p>
+          
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👨‍🏫 อาจารย์ที่ปรึกษา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #9C27B0; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ส
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">อ.สมหญิง ใจดี</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">📚 อาจารย์ประจำวิชา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #E91E63; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ป
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">อ.ดร.ประสิทธิ์ แสงทอง</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👥 สมาชิกในทีม</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #E91E63; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นายอนุชา บุญมา</div>
+                  <small class="text-muted">รหัส: 6401234573</small>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #673AB7; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นางสาวปรียา สวยงาม</div>
+                  <small class="text-muted">รหัส: 6401234574</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top: 1px solid #e9ecef;">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: แอปพลิเคชันติดตามสุขภาพ -->
+  <div class="modal fade" id="responsibleModal5" tabindex="-1" aria-labelledby="responsibleModal5Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 16px; border: none;">
+        <div class="modal-header" style="background: linear-gradient(135deg, #00BCD4 0%, #4CAF50 100%); color: white; border-radius: 16px 16px 0 0;">
+          <h5 class="modal-title fw-semibold" id="responsibleModal5Label">รายชื่อผู้รับผิดชอบโปรเจ็ค</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <h6 class="fw-semibold mb-3" style="color: #2c3e50;">แอปพลิเคชันติดตามสุขภาพ</h6>
+          <p class="text-muted mb-4"><small>รหัส: PR2024-005</small></p>
+          
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👨‍🏫 อาจารย์ที่ปรึกษา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #00BCD4; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  จ
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">ผศ.ดร.จินตนา บุญมี</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">📚 อาจารย์ประจำวิชา</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #4CAF50; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ว
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">ผศ.ดร.วิชัย สุขสันต์</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 p-3" style="background: #f8f9fa; border-radius: 12px;">
+                <div class="avatar-sm" style="width: 48px; height: 48px; border-radius: 50%; background: #009688; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 600;">
+                  ส
+                </div>
+                <div>
+                  <div class="fw-semibold" style="color: #2c3e50;">อ.สุดา มั่นคง</div>
+                  <small class="text-muted">คณะเทคโนโลยีสารสนเทศ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h6 class="text-secondary mb-3" style="font-size: 0.9rem;">👥 สมาชิกในทีม</h6>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #4CAF50; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นายธนากร สุขใจ</div>
+                  <small class="text-muted">รหัส: 6401234575</small>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 p-2" style="background: #f8f9fa; border-radius: 10px;">
+                <div class="avatar-sm" style="width: 40px; height: 40px; border-radius: 50%; background: #009688; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 600;">
+                  น
+                </div>
+                <div>
+                  <div class="fw-medium" style="font-size: 0.95rem;">นางสาวรัตนา เจริญดี</div>
+                  <small class="text-muted">รหัส: 6401234576</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top: 1px solid #e9ecef;">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

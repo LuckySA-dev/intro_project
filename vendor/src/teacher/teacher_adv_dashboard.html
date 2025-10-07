@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ระบบจัดการโครงการ – รายงานสรุป</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../style/style.css" />
+</head>
+<body class="student-dashboard">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="container-fluid px-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2 top-left">
+          <button class="btn btn-icon-home" aria-label="หน้าหลัก" onclick="location.href='teacher_adv_home.html'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </button>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text">Home</span>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text fw-semibold">รายงานสรุป</span>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 top-right">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" placeholder="Search" class="search-input" />
+          </div>
+          <button class="btn btn-icon-notif">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+          <div class="avatar">T</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="dashboard-wrap container-fluid">
+    <div class="row g-3">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="col-12 col-lg-auto">
+        <aside class="sidebar">
+          <div class="logo-section">
+            <div class="logo-img">
+              <img src="../../img/logo.png" alt="Logo" height="100%" width="100%">
+            </div>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="teacher_adv_home.html" class="nav-item">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>หน้าหลัก</span>
+            </a>
+
+            <a href="teacher_adv_process.html" class="nav-item">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              <span>การรับเสนอการปรึกษาและการคืบหน้า</span>
+            </a>
+
+            <a href="teacher_adv_exam.html" class="nav-item">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>การสอบหัวข้อ</span>
+            </a>
+
+            <a href="teacher_adv_dashboard.html" class="nav-item active">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>รายงาน</span>
+            </a>
+
+            <a href="teacher_join_adv.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>อาจารย์ที่ปรึกษาร่วม</span>
+            </a>
+
+            <a href="teacher_comment.html" class="nav-item">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+              <span>Comment</span>
+            </a>
+          </nav>
+
+          <div class="sidebar-footer">
+            <a href="../../../index.html" class="nav-item nav-item-special">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>หน้าหลัก Login</span>
+            </a>
+            
+            <a href="../../../index.html" class="nav-item nav-item-logout mt-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>ออกจากระบบ</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="col-12 col-lg">
+        <div class="content-area">
+          
+          <!-- Summary Dashboard -->
+          <div class="card-widget">
+            <div class="widget-header">
+              <h6 class="widget-title">รายงานสรุปการดูแลนักศึกษา</h6>
+              <small class="text-muted">ข้อมูล ณ วันที่ <?php echo date('d/m/Y'); ?></small>
+            </div>
+            <div class="widget-body">
+              
+              <div class="dashboard-stats-container">
+                <div class="row g-4 mb-4">
+                  
+                  <!-- Project Count Card -->
+                  <div class="col-12 col-md-4">
+                    <div class="summary-stat-card stat-primary">
+                      <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                      </div>
+                      <div class="stat-content">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">โครงการทั้งหมด</div>
+                        <div class="stat-sublabel">ที่กำลังดูแล</div>
+                      </div>
+                      <div class="stat-trend">
+                        <span class="trend-up">+1</span>
+                        <small>เดือนนี้</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Students Count Card -->
+                  <div class="col-12 col-md-4">
+                    <div class="summary-stat-card stat-success">
+                      <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="9" cy="7" r="4"></circle>
+                          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                      </div>
+                      <div class="stat-content">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">นักศึกษา</div>
+                        <div class="stat-sublabel">ที่ดูแลทั้งหมด</div>
+                      </div>
+                      <div class="stat-trend">
+                        <span class="trend-stable">0</span>
+                        <small>เปลี่ยนแปลง</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Exam Count Card -->
+                  <div class="col-12 col-md-4">
+                    <div class="summary-stat-card stat-warning">
+                      <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </div>
+                      <div class="stat-content">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">รอสอบหัวข้อ</div>
+                        <div class="stat-sublabel">ต้องเตรียมการ</div>
+                      </div>
+                      <div class="stat-trend">
+                        <span class="trend-down">-1</span>
+                        <small>สัปดาห์นี้</small>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Detailed Progress Section -->
+                <div class="row g-4">
+                  <div class="col-12 col-lg-8">
+                    <div class="progress-overview">
+                      <h6 class="section-title mb-3">ความคืบหน้าโครงการ</h6>
+                      
+                      <div class="progress-list">
+                        <div class="progress-item-detailed">
+                          <div class="project-info">
+                            <h6 class="project-title">ระบบจัดการข้อมูลนักศึกษา</h6>
+                            <p class="project-student">นายสมชาย ใจดี - 6410110001</p>
+                          </div>
+                          <div class="progress-bar-container">
+                            <div class="progress-bar-custom">
+                              <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="progress-percentage">75%</span>
+                          </div>
+                          <div class="project-status status-good">ดีมาก</div>
+                        </div>
+
+                        <div class="progress-item-detailed">
+                          <div class="project-info">
+                            <h6 class="project-title">แอปพลิเคชันจองห้องประชุม</h6>
+                            <p class="project-student">นางสาวสุดา มานะ - 6410110002</p>
+                          </div>
+                          <div class="progress-bar-container">
+                            <div class="progress-bar-custom">
+                              <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="progress-percentage">45%</span>
+                          </div>
+                          <div class="project-status status-warning">ต้องเร่ง</div>
+                        </div>
+
+                        <div class="progress-item-detailed">
+                          <div class="project-info">
+                            <h6 class="project-title">เว็บไซต์อีคอมเมิร์ซ</h6>
+                            <p class="project-student">นายวิชัย สุขใส - 6410110003</p>
+                          </div>
+                          <div class="progress-bar-container">
+                            <div class="progress-bar-custom">
+                              <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="progress-percentage">90%</span>
+                          </div>
+                          <div class="project-status status-excellent">ดีเยี่ยม</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-lg-4">
+                    <div class="upcoming-events">
+                      <h6 class="section-title mb-3">กิจกรรมที่กำลังจะถึง</h6>
+                      
+                      <div class="event-list">
+                        <div class="event-item urgent">
+                          <div class="event-date">
+                            <span class="date-day">15</span>
+                            <span class="date-month">ต.ค.</span>
+                          </div>
+                          <div class="event-info">
+                            <h6 class="event-title">สอบหัวข้อ</h6>
+                            <p class="event-detail">นายสมชาย ใจดี</p>
+                            <small class="event-time">เวลา 09:00 น.</small>
+                          </div>
+                        </div>
+
+                        <div class="event-item normal">
+                          <div class="event-date">
+                            <span class="date-day">22</span>
+                            <span class="date-month">ต.ค.</span>
+                          </div>
+                          <div class="event-info">
+                            <h6 class="event-title">ประชุมความคืบหน้า</h6>
+                            <p class="event-detail">นางสาวสุดา มานะ</p>
+                            <small class="event-time">เวลา 14:00 น.</small>
+                          </div>
+                        </div>
+
+                        <div class="event-item normal">
+                          <div class="event-date">
+                            <span class="date-day">28</span>
+                            <span class="date-month">ต.ค.</span>
+                          </div>
+                          <div class="event-info">
+                            <h6 class="event-title">สอบป้องกัน</h6>
+                            <p class="event-detail">นายวิชัย สุขใส</p>
+                            <small class="event-time">เวลา 10:30 น.</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    /* Dashboard Card */
+    .card-widget {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 32px;
+      transition: all 0.3s ease;
+    }
+
+    .card-widget:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .widget-header {
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .widget-title {
+      color: #333;
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    /* Dashboard Stats Container */
+    .dashboard-stats-container {
+      padding: 8px;
+    }
+
+    /* Summary Stat Cards */
+    .summary-stat-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .summary-stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .stat-primary {
+      border-color: #E3F2FD;
+      background: linear-gradient(135deg, #ffffff 0%, #E3F2FD 100%);
+    }
+
+    .stat-primary .stat-icon {
+      background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    }
+
+    .stat-success {
+      border-color: #E8F5E9;
+      background: linear-gradient(135deg, #ffffff 0%, #E8F5E9 100%);
+    }
+
+    .stat-success .stat-icon {
+      background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    }
+
+    .stat-warning {
+      border-color: #FFF3E0;
+      background: linear-gradient(135deg, #ffffff 0%, #FFF3E0 100%);
+    }
+
+    .stat-warning .stat-icon {
+      background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+    }
+
+    .stat-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .stat-icon svg {
+      color: #fff;
+    }
+
+    .stat-content {
+      flex: 1;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: #333;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 4px;
+    }
+
+    .stat-sublabel {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .stat-trend {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 8px;
+    }
+
+    .stat-trend span {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .trend-up {
+      color: #4CAF50;
+    }
+
+    .trend-down {
+      color: #f44336;
+    }
+
+    .trend-stable {
+      color: #757575;
+    }
+
+    .stat-trend small {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Progress Overview */
+    .progress-overview {
+      background: #f8f9fa;
+      border-radius: 16px;
+      padding: 24px;
+      height: 100%;
+    }
+
+    .progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .progress-item-detailed {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+    }
+
+    .progress-item-detailed:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .project-info {
+      margin-bottom: 16px;
+    }
+
+    .project-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .project-student {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+
+    .progress-bar-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .progress-bar-custom {
+      flex: 1;
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%);
+      border-radius: 5px;
+      transition: width 0.6s ease;
+    }
+
+    .progress-percentage {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      min-width: 45px;
+      text-align: right;
+    }
+
+    .project-status {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .status-excellent {
+      background: #E8F5E9;
+      color: #2E7D32;
+    }
+
+    .status-good {
+      background: #E3F2FD;
+      color: #1565C0;
+    }
+
+    .status-warning {
+      background: #FFF3E0;
+      color: #E65100;
+    }
+
+    /* Upcoming Events */
+    .upcoming-events {
+      background: #f8f9fa;
+      border-radius: 16px;
+      padding: 24px;
+      height: 100%;
+    }
+
+    .event-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .event-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .event-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .event-item.urgent {
+      border-left-color: #f44336;
+    }
+
+    .event-item.normal {
+      border-left-color: #2196F3;
+    }
+
+    .event-date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+      border-radius: 10px;
+      padding: 12px;
+      min-width: 60px;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+    }
+
+    .event-item.urgent .event-date {
+      background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+      box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
+    }
+
+    .date-day {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .date-month {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-top: 2px;
+    }
+
+    .event-info {
+      flex: 1;
+    }
+
+    .event-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .event-detail {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .event-time {
+      font-size: 12px;
+      color: #999;
+    }
+
+    /* Animations */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .summary-stat-card,
+    .progress-item-detailed,
+    .event-item {
+      animation: slideUp 0.5s ease-out;
+    }
+
+    .summary-stat-card:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .summary-stat-card:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .summary-stat-card:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .card-widget {
+        padding: 24px;
+      }
+
+      .dashboard-stats-container {
+        padding: 4px;
+      }
+
+      .progress-overview,
+      .upcoming-events {
+        padding: 20px;
+      }
+
+      .stat-number {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card-widget {
+        padding: 20px;
+      }
+
+      .widget-title {
+        font-size: 18px;
+      }
+
+      .summary-stat-card {
+        padding: 20px;
+      }
+
+      .stat-icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .stat-icon svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .stat-number {
+        font-size: 28px;
+      }
+
+      .progress-item-detailed,
+      .event-item {
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .card-widget {
+        padding: 16px;
+      }
+
+      .summary-stat-card {
+        padding: 16px;
+      }
+
+      .progress-overview,
+      .upcoming-events {
+        padding: 16px;
+      }
+
+      .stat-number {
+        font-size: 24px;
+      }
+
+      .event-date {
+        min-width: 50px;
+        padding: 8px;
+      }
+
+      .date-day {
+        font-size: 20px;
+      }
+    }
+  </style>
+</body>
+</html>

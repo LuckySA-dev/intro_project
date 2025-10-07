@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ระบบจัดการโครงการนักศึกษา – ลงทะเบียนบุคลากร/เจ้าหน้าที่</title>
+  <title>ระบบจัดการโครงการนักศึกษา – ลงทะเบียนผู้ใช้ใหม่</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -21,12 +21,12 @@
     <div class="container-fluid px-3">
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-2 top-left">
-          <button class="btn backchip" aria-label="ย้อนกลับ" onclick="window.location.href='register.html'">&lsaquo;</button>
-          <input class="form-control form-control-sm search-pill" value="ลงทะเบียนผู้ใช้ใหม่ > บุคลากร/เจ้าหน้าที่" readonly />
+          <button class="btn backchip" onclick="window.location.href='../../index.html'" aria-label="ย้อนกลับ">&lsaquo;</button>
+          <input class="form-control form-control-sm search-pill" value=": ลงทะเบียนผู้ใช้ใหม่" />
         </div>
 
         <div class="d-flex align-items-center gap-3 top-right">
-          <div class="subtitle small">Student Project Management System – Presentation Mockup</div>
+          <div class="subtitle small">Student Project Management System – Present Mockup</div>
           <div class="title">ระบบจัดการโครงการนักศึกษา</div>
         </div>
       </div>
@@ -43,7 +43,7 @@
         <div class="login-card">
           <div class="logo-hold">
             <div class="fake-logo">
-              <img src="../img/logo.png" alt="Logo" height="100%" width="100%">
+              <img src="../img/logo.png" alt="" srcset="" height="100%" width="100%">
             </div>
           </div>
 
@@ -77,55 +77,17 @@
         <div class="announce-bar text-center">ข่าวประกาศภาควิชา</div>
 
         <section class="register-panel mt-3">
-          <h5 class="text-center fw-bold mb-2 fc-1">ลงทะเบียนผู้ใช้ใหม่</h5>
-          <p class="text-center text-muted mb-4 role-subtitle">บุคลากร/เจ้าหน้าที่</p>
+          <h5 class="text-center fw-semibold mb-4 fc-1">ลงทะเบียนผู้ใช้ใหม่</h5>
 
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
-              <form class="register-form">
-                
-                <!-- ชื่อ-สกุล -->
-                <div class="mb-3">
-                  <label class="form-label fw-semibold">ชื่อ – สกุล</label>
-                  <input type="text" class="form-control input-field" placeholder="ชื่อ – สกุล" />
-                </div>
-
-                <!-- ตำแหน่ง -->
-                <div class="mb-3">
-                  <label class="form-label fw-semibold">ตำแหน่ง</label>
-                  <input type="text" class="form-control input-field" placeholder="ตำแหน่ง" />
-                </div>
-
-                <!-- Username -->
-                <div class="mb-3">
-                  <label class="form-label fw-semibold">Username</label>
-                  <input type="text" class="form-control input-field" placeholder="Username" />
-                </div>
-
-                <!-- Password -->
-                <div class="mb-3">
-                  <label class="form-label fw-semibold">Password</label>
-                  <input type="password" class="form-control input-field" placeholder="Password" />
-                </div>
-
-                <!-- Confirm Password -->
-                <div class="mb-3">
-                  <label class="form-label fw-semibold">Confirm password</label>
-                  <input type="password" class="form-control input-field" placeholder="Confirm password" />
-                </div>
-
-                <!-- E-mail -->
-                <div class="mb-4">
-                  <label class="form-label fw-semibold">E-mail</label>
-                  <input type="email" class="form-control input-field" placeholder="E-mail" />
-                </div>
-
-                <!-- Submit Button -->
-                <div class="text-end">
-                  <a type="submit" class="btn btn-success btn-submit px-5 py-2" href="staff/staff.html">ยืนยัน</a>
-                </div>
-
-              </form>
+          <div class="row g-4 justify-content-center mt-5">
+            <div class="col-2 col-sm-4 col-md-4">
+              <button class="role-card w-100" onclick="window.location.href='register_stu.html'">นักศึกษา</button>
+            </div>
+            <div class="col-10 col-sm-5 col-md-4">
+              <button class="role-card w-100" onclick="window.location.href='register_tea.html'">อาจารย์</button>
+            </div>
+            <div class="col-12 col-sm-4 col-md-6" style="margin-top: 100px">
+              <button class="role-card w-100" onclick="window.location.href='register_staff.html'">บุคลากร/เจ้าหน้าที่</button>
             </div>
           </div>
         </section>

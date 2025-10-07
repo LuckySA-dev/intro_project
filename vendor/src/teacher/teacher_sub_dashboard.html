@@ -1,0 +1,1331 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ระบบจัดการโครงการ – รายการโครงการรอรับรอง</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../style/style.css" />
+  
+  <style>
+    /* ใช้ CSS จาก style.css เป็นหลัก เพิ่มเติมเฉพาะที่จำเป็น */
+    .content-area {
+      padding: 20px;
+    }
+
+    .card-widget {
+      margin-bottom: 0;
+    }
+
+    .widget-body {
+      padding: 0 4px;
+    }
+
+    .dashboard-stats-container {
+      padding: 0;
+    }
+
+    /* เพิ่มเติม Summary Stat Cards - ใช้ร่วมกับ .card-widget ใน style.css */
+    .summary-stat-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .summary-stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .stat-primary {
+      border-color: #2196F3;
+      background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    }
+
+    .stat-success {
+      border-color: #4CAF50;
+      background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    }
+
+    .stat-warning {
+      border-color: #FF9800;
+      background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+    }
+
+    .stat-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .stat-primary .stat-icon {
+      background: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
+    }
+
+    .stat-success .stat-icon {
+      background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+    }
+
+    .stat-warning .stat-icon {
+      background: linear-gradient(135deg, #F57C00 0%, #E65100 100%);
+    }
+
+    .stat-icon svg {
+      color: #fff;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .summary-stat-card:hover .stat-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .stat-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .stat-number {
+      font-size: 42px;
+      font-weight: 800;
+      color: #333;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #666;
+      margin: 0;
+    }
+
+    .stat-sublabel {
+      font-size: 13px;
+      color: #999;
+      font-weight: 400;
+    }
+
+    .stat-trend {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      padding: 6px 12px;
+      background: rgba(0,0,0,0.03);
+      border-radius: 8px;
+      width: fit-content;
+    }
+
+    .trend-up {
+      color: #4CAF50;
+      font-weight: 700;
+    }
+
+    .trend-warning {
+      color: #FF9800;
+      font-weight: 700;
+    }
+
+    /* Table Section */
+    .table-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #f0f0f0;
+      margin-top: 20px;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #f5f5f5;
+    }
+
+    .table-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-filter,
+    .btn-export {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-filter:hover,
+    .btn-export:hover {
+      background: #f8f9fa;
+      border-color: var(--cyan-600);
+      color: var(--cyan-600);
+    }
+
+    /* Project Table */
+    .project-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    .project-table thead {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .project-table th {
+      padding: 14px 12px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 13px;
+      color: #555;
+      border-bottom: 2px solid #dee2e6;
+      white-space: nowrap;
+    }
+
+    .project-table td {
+      padding: 14px 12px;
+      font-size: 13px;
+      color: #666;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: middle;
+    }
+
+    .project-table tbody tr {
+      transition: all 0.3s ease;
+    }
+
+    .project-table tbody tr:hover {
+      background: #f8f9fa;
+    }
+
+    .project-name {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .project-name strong {
+      color: #333;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .project-name small {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .student-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .student-name {
+      color: #333;
+      font-weight: 500;
+    }
+
+    .student-id {
+      font-size: 12px;
+      color: #999;
+    }
+
+    /* Status Badges */
+    .status-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .status-pending {
+      background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+      color: #F57C00;
+      border: 1px solid #FFB74D;
+    }
+
+    .status-approved {
+      background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+      color: #388E3C;
+      border: 1px solid #81C784;
+    }
+
+    .status-rejected {
+      background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+      color: #D32F2F;
+      border: 1px solid #E57373;
+    }
+
+    /* Action Buttons - ใช้ Bootstrap button classes */
+    .action-buttons {
+      display: flex;
+      gap: 6px;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-accept {
+      background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+      color: #fff;
+    }
+
+    .btn-accept:hover {
+      background: linear-gradient(135deg, #45a049 0%, #2d7a2f 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+
+    .btn-detail {
+      background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+      color: #fff;
+    }
+
+    .btn-detail:hover {
+      background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+    }
+
+    .btn-reject {
+      background: linear-gradient(135deg, #f44336 0%, #D32F2F 100%);
+      color: #fff;
+    }
+
+    .btn-reject:hover {
+      background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    }
+
+    /* Pagination */
+    .table-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .showing-info {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .pagination {
+      display: flex;
+      gap: 6px;
+    }
+
+    .page-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: #666;
+    }
+
+    .page-btn:hover:not(:disabled) {
+      background: #f8f9fa;
+      border-color: var(--cyan-600);
+      color: var(--cyan-600);
+    }
+
+    .page-btn.active {
+      background: var(--cyan-600);
+      color: #fff;
+      border-color: var(--cyan-600);
+    }
+
+    .page-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .content-area {
+        padding: 16px;
+      }
+
+      .table-section {
+        padding: 20px;
+      }
+
+      .btn-sm {
+        padding: 5px 10px;
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .content-area {
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .content-area {
+        padding: 10px;
+      }
+
+      .table-section {
+        padding: 16px;
+      }
+
+      .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .table-actions {
+        width: 100%;
+      }
+
+      .btn-filter,
+      .btn-export {
+        flex: 1;
+        justify-content: center;
+      }
+
+      .action-buttons {
+        gap: 4px;
+      }
+
+      .btn-sm {
+        padding: 4px 8px;
+        font-size: 10px;
+      }
+
+      .project-table th,
+      .project-table td {
+        padding: 10px 8px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .action-buttons {
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { 
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to { 
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-container {
+      background: #fff;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    .modal-header {
+      padding: 24px;
+      border-bottom: 2px solid #f0f0f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #666;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    .modal-body {
+      padding: 24px;
+    }
+
+    .email-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .form-label .required {
+      color: #f44336;
+    }
+
+    .form-input,
+    .form-textarea {
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #333;
+      transition: all 0.3s ease;
+      font-family: 'Noto Sans Thai', sans-serif;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #2196F3;
+      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    }
+
+    .form-input[readonly] {
+      background: #f5f5f5;
+      color: #666;
+      cursor: not-allowed;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .project-info-box {
+      background: linear-gradient(135deg, #E3F2FD 0%, #f0f7ff 100%);
+      padding: 16px;
+      border-radius: 12px;
+      border: 2px solid #2196F3;
+      margin-top: 8px;
+    }
+
+    .project-info-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .project-info-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-info-label {
+      font-weight: 600;
+      color: #1976D2;
+      min-width: 100px;
+    }
+
+    .project-info-value {
+      color: #333;
+      flex: 1;
+    }
+
+    .modal-footer {
+      padding: 20px 24px;
+      border-top: 2px solid #f0f0f0;
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      background: #f8f9fa;
+      border-radius: 0 0 16px 16px;
+    }
+
+    .btn-modal {
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-cancel {
+      background: #fff;
+      color: #666;
+      border: 2px solid #ddd;
+    }
+
+    .btn-cancel:hover {
+      background: #f5f5f5;
+      border-color: #bbb;
+    }
+
+    .btn-send {
+      background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+
+    .btn-send:hover {
+      background: linear-gradient(135deg, #45a049 0%, #2d7a2f 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+    }
+
+    .email-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .modal-container {
+        width: 95%;
+        max-height: 95vh;
+      }
+
+      .modal-header {
+        padding: 20px;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .modal-title {
+        font-size: 18px;
+      }
+
+      .project-info-label {
+        min-width: 80px;
+        font-size: 13px;
+      }
+
+      .modal-footer {
+        flex-direction: column;
+      }
+
+      .btn-modal {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body class="student-dashboard">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="container-fluid px-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2 top-left">
+          <button class="btn btn-icon-home" aria-label="หน้าหลัก" onclick="location.href='teacher_sub_home.html'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </button>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text">Home</span>
+          <span class="breadcrumb-arrow">›</span>
+          <span class="breadcrumb-text fw-semibold">ติดตามโครงการทั้งหมดในวิชาและลงชื่อรับรอง</span>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 top-right">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" placeholder="Search" class="search-input" />
+          </div>
+          <button class="btn btn-icon-notif">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+          <div class="avatar">T</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="dashboard-wrap container-fluid">
+    <div class="row g-3">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="col-12 col-lg-auto">
+        <aside class="sidebar">
+          <div class="logo-section">
+            <div class="logo-img">
+              <img src="../../img/logo.png" alt="Logo" height="100%" width="100%">
+            </div>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="teacher_sub_home.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              <span>ติดตามโครงการทั้งหมดในวิชาและลงชื่อรับรอง</span>
+            </a>
+
+            <a href="teacher_sub_dashboard.html" class="nav-item active">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>รายการมีโครงการรอการรับรอง</span>
+            </a>
+
+            <a href="teacher_join_sub.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>อาจารย์ที่ปรึกษาร่วม</span>
+            </a>
+
+            <a href="teacher_sub_comment.html" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Comment</span>
+            </a>
+          </nav>
+
+          <div class="sidebar-footer">
+            <a href="../../../index.html" class="nav-item nav-item-special">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>หน้าหลัก Login</span>
+            </a>
+            
+            <a href="../../../index.html" class="nav-item nav-item-logout mt-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>ออกจากระบบ</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="col-12 col-lg">
+        <div class="content-area">
+          
+          <!-- Summary Dashboard -->
+          <div class="card-widget">
+            <div class="widget-header">
+              <h6 class="widget-title mt-2">รายการโครงการรอการรับรอง</h6>
+              <small class="text-muted">ข้อมูล ณ วันที่ 07/10/2025</small>
+            </div>
+            <div class="widget-body">
+              
+              <div class="dashboard-stats-container">
+                <div class="row g-3 mb-3" style="margin: 0 -12px;">
+                  
+                  <!-- โครงการทั้งหมด Card -->
+                  <div class="col-12 col-md-4" style="padding: 0 12px;">
+                    <div class="summary-stat-card stat-primary">
+                      <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                      </div>
+                      <div class="stat-content">
+                        <div class="stat-number">24</div>
+                        <div class="stat-label">โครงการทั้งหมด</div>
+                        <div class="stat-sublabel">ในวิชานี้</div>
+                      </div>
+                      <div class="stat-trend">
+                        <span class="trend-up">+3</span>
+                        <small>เดือนนี้</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- รอรับรอง Card -->
+                  <div class="col-12 col-md-4" style="padding: 0 12px;">
+                    <div class="summary-stat-card stat-warning">
+                      <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="12" y1="8" x2="12" y2="12"></line>
+                          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                      </div>
+                      <div class="stat-content">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">รอรับรอง</div>
+                        <div class="stat-sublabel">ต้องดำเนินการ</div>
+                      </div>
+                      <div class="stat-trend">
+                        <span class="trend-warning">!</span>
+                        <small>รอการดำเนินการ</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- เสร็จสิ้นแล้ว Card -->
+                  <div class="col-12 col-md-4" style="padding: 0 12px;">
+                    <div class="summary-stat-card stat-success">
+                      <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                      </div>
+                      <div class="stat-content">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">เสร็จสิ้นแล้ว</div>
+                        <div class="stat-sublabel">รับรองเรียบร้อย</div>
+                      </div>
+                      <div class="stat-trend">
+                        <span class="trend-up">+2</span>
+                        <small>สัปดาห์นี้</small>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Project Table CRUD Section -->
+                <div class="row g-4 mt-2">
+                  <div class="col-12">
+                    <div class="table-section">
+                      <div class="table-header">
+                        <h6 class="section-title">รายการโครงการรอการรับรอง</h6>
+                        <div class="table-actions">
+                          <button class="btn btn-filter">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                            </svg>
+                            Filter
+                          </button>
+                          <button class="btn btn-export">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                              <polyline points="7 10 12 15 17 10"></polyline>
+                              <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Export
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="table-responsive" style="margin: 0 -4px;">
+                        <table class="project-table">
+                          <thead>
+                            <tr>
+                              <th width="5%">#</th>
+                              <th width="25%">ชื่อโครงการ</th>
+                              <th width="20%">นักศึกษา</th>
+                              <th width="15%">วันที่ส่ง</th>
+                              <th width="15%">สถานะ</th>
+                              <th width="20%">การดำเนินการ</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>
+                                <div class="project-name">
+                                  <strong>ระบบจัดการข้อมูลนักศึกษา</strong>
+                                  <small class="text-muted">CS-2025-001</small>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="student-info">
+                                  <span class="student-name">นายสมชาย ใจดี</span>
+                                  <small class="student-id">6410110001</small>
+                                </div>
+                              </td>
+                              <td>05/10/2025</td>
+                              <td><span class="status-badge status-pending">รอรับรอง</span></td>
+                              <td>
+                                <div class="action-buttons">
+                                  <button class="btn btn-sm btn-accept" onclick="openAcceptModal('ระบบจัดการข้อมูลนักศึกษา', 'CS-2025-001', 'นายสมชาย ใจดี', '6410110001', 'อ.ดร.สมศักดิ์ วงศ์ดี')">รับเรื่อง</button>
+                                  <button class="btn btn-sm btn-detail">ดูรายละเอียด</button>
+                                  <button class="btn btn-sm btn-reject">ไม่รับรอง</button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>
+                                <div class="project-name">
+                                  <strong>แอปพลิเคชันจองห้องประชุม</strong>
+                                  <small class="text-muted">CS-2025-002</small>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="student-info">
+                                  <span class="student-name">นางสาวสุดา มานะ</span>
+                                  <small class="student-id">6410110002</small>
+                                </div>
+                              </td>
+                              <td>06/10/2025</td>
+                              <td><span class="status-badge status-pending">รอรับรอง</span></td>
+                              <td>
+                                <div class="action-buttons">
+                                  <button class="btn btn-sm btn-accept" onclick="openAcceptModal('แอปพลิเคชันจองห้องประชุม', 'CS-2025-002', 'นางสาวสุดา มานะ', '6410110002', 'ผศ.ดร.วิชัย ชาญฉลาด')">รับเรื่อง</button>
+                                  <button class="btn btn-sm btn-detail">ดูรายละเอียด</button>
+                                  <button class="btn btn-sm btn-reject">ไม่รับรอง</button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>
+                                <div class="project-name">
+                                  <strong>เว็บไซต์อีคอมเมิร์ซ</strong>
+                                  <small class="text-muted">CS-2025-003</small>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="student-info">
+                                  <span class="student-name">นายวิชัย สุขใส</span>
+                                  <small class="student-id">6410110003</small>
+                                </div>
+                              </td>
+                              <td>04/10/2025</td>
+                              <td><span class="status-badge status-approved">รับรองแล้ว</span></td>
+                              <td>
+                                <div class="action-buttons">
+                                  <button class="btn btn-sm btn-detail">ดูรายละเอียด</button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>
+                                <div class="project-name">
+                                  <strong>ระบบบริหารจัดการร้านอาหาร</strong>
+                                  <small class="text-muted">CS-2025-004</small>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="student-info">
+                                  <span class="student-name">นางสาวมณี รักดี</span>
+                                  <small class="student-id">6410110004</small>
+                                </div>
+                              </td>
+                              <td>07/10/2025</td>
+                              <td><span class="status-badge status-pending">รอรับรอง</span></td>
+                              <td>
+                                <div class="action-buttons">
+                                  <button class="btn btn-sm btn-accept" onclick="openAcceptModal('ระบบบริหารจัดการร้านอาหาร', 'CS-2025-004', 'นางสาวมณี รักดี', '6410110004', 'อ.สุรชัย มั่นคง')">รับเรื่อง</button>
+                                  <button class="btn btn-sm btn-detail">ดูรายละเอียด</button>
+                                  <button class="btn btn-sm btn-reject">ไม่รับรอง</button>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td>
+                                <div class="project-name">
+                                  <strong>แอปติดตามสุขภาพ</strong>
+                                  <small class="text-muted">CS-2025-005</small>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="student-info">
+                                  <span class="student-name">นายประเสริฐ ดีงาม</span>
+                                  <small class="student-id">6410110005</small>
+                                </div>
+                              </td>
+                              <td>03/10/2025</td>
+                              <td><span class="status-badge status-rejected">ไม่รับรอง</span></td>
+                              <td>
+                                <div class="action-buttons">
+                                  <button class="btn btn-sm btn-detail">ดูรายละเอียด</button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <!-- Pagination -->
+                      <div class="table-footer">
+                        <div class="showing-info">
+                          แสดง 1-5 จาก 10 รายการ
+                        </div>
+                        <div class="pagination">
+                          <button class="page-btn" disabled>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                          </button>
+                          <button class="page-btn active">1</button>
+                          <button class="page-btn">2</button>
+                          <button class="page-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Accept Project Modal -->
+  <div id="acceptModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          ส่งอีเมลยืนยันการรับรอง
+        </h5>
+        <button class="modal-close" onclick="closeAcceptModal()">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <form id="acceptForm" class="email-form">
+          
+          <!-- ข้อมูลโครงการ -->
+          <div class="form-group">
+            <label class="form-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              ข้อมูลโครงการ
+            </label>
+            <div class="project-info-box">
+              <div class="project-info-row">
+                <span class="project-info-label">ชื่อโครงการ:</span>
+                <span class="project-info-value" id="modalProjectName">-</span>
+              </div>
+              <div class="project-info-row">
+                <span class="project-info-label">รหัสโครงการ:</span>
+                <span class="project-info-value" id="modalProjectCode">-</span>
+              </div>
+              <div class="project-info-row">
+                <span class="project-info-label">นักศึกษา:</span>
+                <span class="project-info-value" id="modalStudentName">-</span>
+              </div>
+              <div class="project-info-row">
+                <span class="project-info-label">รหัสนักศึกษา:</span>
+                <span class="project-info-value" id="modalStudentId">-</span>
+              </div>
+              <div class="project-info-row">
+                <span class="project-info-label">ผู้รับผิดชอบ:</span>
+                <span class="project-info-value" id="modalProjectManager">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ส่งถึง ผู้รับผิดชอบโปรเจ็ค (To) -->
+          <div class="form-group">
+            <label class="form-label" for="emailTo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              ส่งถึง ผู้รับผิดชอบโปรเจ็ค <span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="emailTo" 
+              class="form-input" 
+              readonly
+              required
+            />
+          </div>
+
+          <!-- หัวข้อ (Subject) -->
+          <div class="form-group">
+            <label class="form-label" for="emailSubject">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              </svg>
+              หัวข้อ <span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="emailSubject" 
+              class="form-input" 
+              readonly
+              value="แจ้งการรับรองโครงการ - รอการเซ็นรับทราบ"
+            />
+          </div>
+
+          <!-- ข้อความ (Message) -->
+          <div class="form-group">
+            <label class="form-label" for="emailMessage">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              ข้อความ <span class="required">*</span>
+            </label>
+            <textarea 
+              id="emailMessage" 
+              class="form-textarea" 
+              placeholder="กรอกข้อความที่ต้องการส่งถึงนักศึกษา..."
+              required
+            ></textarea>
+          </div>
+
+          <!-- คำแนะนำเพิ่มเติม -->
+          <div class="form-group">
+            <label class="form-label" for="emailNote">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+              คำแนะนำเพิ่มเติม
+            </label>
+            <textarea 
+              id="emailNote" 
+              class="form-textarea" 
+              placeholder="ระบุคำแนะนำหรือข้อความเพิ่มเติม (ถ้ามี)"
+              rows="3"
+            ></textarea>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-modal btn-cancel" onclick="closeAcceptModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          ยกเลิก
+        </button>
+        <button type="button" class="btn-modal btn-send" onclick="sendAcceptEmail()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+          ส่งอีเมล
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Open Accept Modal
+    function openAcceptModal(projectName, projectCode, studentName, studentId, projectManager) {
+      document.getElementById('modalProjectName').textContent = projectName;
+      document.getElementById('modalProjectCode').textContent = projectCode;
+      document.getElementById('modalStudentName').textContent = studentName;
+      document.getElementById('modalStudentId').textContent = studentId;
+      document.getElementById('modalProjectManager').textContent = projectManager;
+      
+      // Auto-fill recipient (project manager)
+      document.getElementById('emailTo').value = projectManager;
+      
+      // Auto-fill default message
+      const defaultMessage = `เรียน ${projectManager}
+
+ทางอาจารย์ผู้รับผิดชอบรายวิชาได้พิจารณาและรับรองโครงการ "${projectName}" (${projectCode}) ของนักศึกษา ${studentName} เรียบร้อยแล้ว
+
+กรุณาเข้าระบบเพื่อเซ็นรับทราบการรับรองโครงการภายใน 3 วันทำการ
+
+หากมีข้อสงสัยประการใด สามารถติดต่อได้ตามช่องทางที่กำหนด
+
+ขอแสดงความนับถือ
+อาจารย์ผู้สอนรายวิชา`;
+      
+      document.getElementById('emailMessage').value = defaultMessage;
+      document.getElementById('acceptModal').classList.add('active');
+    }
+
+    // Close Accept Modal
+    function closeAcceptModal() {
+      document.getElementById('acceptModal').classList.remove('active');
+      document.getElementById('acceptForm').reset();
+    }
+
+    // Send Accept Email
+    function sendAcceptEmail() {
+      const emailTo = document.getElementById('emailTo').value;
+      const emailMessage = document.getElementById('emailMessage').value;
+
+      if (!emailTo) {
+        alert('กรุณาระบุผู้รับ');
+        return;
+      }
+
+      if (!emailMessage) {
+        alert('กรุณากรอกข้อความ');
+        return;
+      }
+
+      // Simulate sending email
+      alert('กำลังส่งอีเมล...\n\nส่งอีเมลเรียบร้อยแล้ว!\nรอผู้รับผิดชอบโปรเจ็คเซ็นรับทราบ');
+      closeAcceptModal();
+
+      // Here you can add actual email sending logic
+      console.log('Email sent to:', emailTo);
+      console.log('Message:', emailMessage);
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('acceptModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeAcceptModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeAcceptModal();
+      }
+    });
+  </script>
+</body>
+</html>
