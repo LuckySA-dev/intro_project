@@ -82,41 +82,98 @@
 
           <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8">
-              <form class="register-form">
+              <form class="register-form" id="teacherRegisterForm">
                 
-                <!-- ชื่อ-สกุล -->
+                <!-- ประเภทอาจารย์ -->
                 <div class="mb-3">
-                  <label class="form-label fw-semibold">ชื่อ – สกุล</label>
-                  <input type="text" class="form-control input-field" placeholder="ชื่อ – สกุล" />
+                  <label class="form-label fw-semibold">ประเภทอาจารย์ <span class="text-danger">*</span></label>
+                  <select id="teacherType" class="form-select input-field" required>
+                    <option value="" selected disabled>เลือกประเภทอาจารย์</option>
+                    <option value="advisor">อาจารย์ที่ปรึกษา</option>
+                    <option value="subject">อาจารย์ประจำวิชา</option>
+                  </select>
+                </div>
+
+                <!-- คำนำหน้า -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">คำนำหน้า <span class="text-danger">*</span></label>
+                  <select class="form-select input-field" required>
+                    <option value="" selected disabled>เลือกคำนำหน้า</option>
+                    <option value="อ.">อาจารย์</option>
+                    <option value="ผศ.">ผู้ช่วยศาสตราจารย์</option>
+                    <option value="รศ.">รองศาสตราจารย์</option>
+                    <option value="ศ.">ศาสตราจารย์</option>
+                    <option value="ดร.">ดร.</option>
+                    <option value="อ.ดร.">อาจารย์ ดร.</option>
+                    <option value="ผศ.ดร.">ผู้ช่วยศาสตราจารย์ ดร.</option>
+                    <option value="รศ.ดร.">รองศาสตราจารย์ ดร.</option>
+                    <option value="ศ.ดร.">ศาสตราจารย์ ดร.</option>
+                  </select>
+                </div>
+
+                <!-- ชื่อ -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">ชื่อ <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control input-field" placeholder="ชื่อ" required />
+                </div>
+
+                <!-- นามสกุล -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">นามสกุล <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control input-field" placeholder="นามสกุล" required />
+                </div>
+
+                <!-- รหัสอาจารย์ -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">รหัสอาจารย์ <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control input-field" placeholder="เช่น T001234" required />
+                </div>
+
+                <!-- สาขาวิชา -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">สาขาวิชา/ภาควิชา <span class="text-danger">*</span></label>
+                  <select class="form-select input-field" required>
+                    <option value="" selected disabled>เลือกสาขาวิชา/ภาควิชา</option>
+                    <option value="cs">วิทยาการคอมพิวเตอร์</option>
+                    <option value="it">เทคโนโลยีสารสนเทศ</option>
+                    <option value="se">วิศวกรรมซอฟต์แวร์</option>
+                    <option value="ce">วิศวกรรมคอมพิวเตอร์</option>
+                  </select>
+                </div>
+
+                <!-- เบอร์โทรศัพท์ -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">เบอร์โทรศัพท์ <span class="text-danger">*</span></label>
+                  <input type="tel" class="form-control input-field" placeholder="0XX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+                </div>
+
+                <!-- E-mail -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">E-mail <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control input-field" placeholder="example@university.ac.th" required />
                 </div>
 
                 <!-- Username -->
                 <div class="mb-3">
-                  <label class="form-label fw-semibold">Username</label>
-                  <input type="text" class="form-control input-field" placeholder="Username" />
+                  <label class="form-label fw-semibold">Username <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control input-field" placeholder="Username สำหรับเข้าสู่ระบบ" required />
                 </div>
 
                 <!-- Password -->
                 <div class="mb-3">
-                  <label class="form-label fw-semibold">Password</label>
-                  <input type="password" class="form-control input-field" placeholder="Password" />
+                  <label class="form-label fw-semibold">Password <span class="text-danger">*</span></label>
+                  <input type="password" class="form-control input-field" placeholder="ระบุรหัสผ่าน (อย่างน้อย 8 ตัวอักษร)" minlength="8" required />
                 </div>
 
                 <!-- Confirm Password -->
-                <div class="mb-3">
-                  <label class="form-label fw-semibold">Confirm password</label>
-                  <input type="password" class="form-control input-field" placeholder="Confirm password" />
-                </div>
-
-                <!-- E-mail -->
                 <div class="mb-4">
-                  <label class="form-label fw-semibold">E-mail</label>
-                  <input type="email" class="form-control input-field" placeholder="E-mail" />
+                  <label class="form-label fw-semibold">Confirm Password <span class="text-danger">*</span></label>
+                  <input type="password" class="form-control input-field" placeholder="ยืนยันรหัสผ่านอีกครั้ง" required />
                 </div>
 
                 <!-- Submit Button -->
                 <div class="text-end">
-                  <a type="submit" class="btn btn-success btn-submit px-5 py-2" href="teacher/teacher_adv_home.html">ยืนยัน</a>
+                  <button type="submit" class="btn btn-success btn-submit px-5 py-2">ยืนยันการลงทะเบียน</button>
                 </div>
 
               </form>
@@ -157,6 +214,43 @@
         window.location.href = rolePaths[userRole];
       } else {
         alert('ไม่พบหน้าสำหรับสิทธิ์นี้');
+      }
+    });
+
+    // Teacher Registration Form Script
+    document.getElementById('teacherRegisterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const teacherType = document.getElementById('teacherType').value;
+      const passwords = this.querySelectorAll('input[type="password"]');
+      
+      // ตรวจสอบว่าเลือกประเภทอาจารย์แล้วหรือยัง
+      if (!teacherType || teacherType === '') {
+        alert('กรุณาเลือกประเภทอาจารย์');
+        return;
+      }
+
+      // ตรวจสอบความถูกต้องของรหัสผ่าน
+      if (passwords[0].value !== passwords[1].value) {
+        alert('รหัสผ่านไม่ตรงกัน กรุณาระบุรหัสผ่านอีกครั้ง');
+        passwords[1].focus();
+        return;
+      }
+
+      if (passwords[0].value.length < 8) {
+        alert('รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร');
+        passwords[0].focus();
+        return;
+      }
+      
+      // แสดงข้อความยืนยัน
+      alert('ลงทะเบียนสำเร็จ! กำลังนำท่านไปยังหน้าหลัก...');
+      
+      // นำทางตามประเภทอาจารย์
+      if (teacherType === 'advisor') {
+        window.location.href = 'teacher/teacher_adv_home.html';
+      } else if (teacherType === 'subject') {
+        window.location.href = 'teacher/teacher_sub_home.html';
       }
     });
   </script>
